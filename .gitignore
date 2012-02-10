@@ -1,0 +1,18 @@
+
+# ignore these work files created by latex
+SRD/SRD.aux
+SRD/SRD.log
+SRD/SRD.out
+SRD/SRD.toc
+SRD/SRD.xdy
+
+
+
+
+.*
+#all hidden files
+!.gitignore
+
+#the executable
+TODO
+
