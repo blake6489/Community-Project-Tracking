@@ -6,7 +6,12 @@ SRD/SRD.out
 SRD/SRD.toc
 SRD/SRD.xdy
 
-
+# ignore these work files created by latex
+SDD/SDD.aux
+SDD/SDD.log
+SDD/SDD.out
+SDD/SDD.toc
+SDD/SdD.xdy
 
 
 .*
