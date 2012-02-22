@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt]{article}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -10,6 +10,10 @@
 \usepackage{float}
 \usepackage{lscape}
 %\usepackage{titlesec}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\definecolor{grey}{RGB}{230,230,230}
+
 
 \usepackage{sectsty}
 \paragraphfont{\normalfont\small}
@@ -62,12 +66,13 @@ Blake Eggemeyer \\ [3cm]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Purpose}
+\section{Introduction}
 
+\subsection{Purpose}
+This Software Requirements Document for Community Project Tracking is for use by the customer and development team. This document is a formal listing of the functional and non-functional requirements of the Community Project Tracking system.
 
 \subsection{Scope}
-
-
+The Community Project Tracking software will assist users in the storing and summary of various activity data.
 
 \subsection{Definitions}
 \begin{enumerate}
@@ -92,7 +97,7 @@ Written with the IEEE Recommended Practice for Software Requirements Specificati
 %\subsection{Overview}
 
 \subsection{Revision tracking:}
-\begin{tabular}{|l|r|p{5.5in}|}
+\begin{tabular}{|l|r|p{5in}|}
 \hline
 0.1 & Feb 10 & Document constructed.\\
 \hline
@@ -126,26 +131,45 @@ Written with the IEEE Recommended Practice for Software Requirements Specificati
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Specific requirements}
-\begin{tabular}{ll}
-\multicolumn{2}{c}{Priority List}\\
-1&s\\
-2&s\\
+The requirements are listed and ordered in a priority list so that their order can be changed at a later date without the section numbers needing to be changed and to allow listing of the priorities in one location.\\
+\\
+\rowcolors{1}{grey}{white}
+\begin{tabular}{l|lp{5.25in}}
+\multicolumn{3}{c}{Priority List}\\
+1 &\ref{sec:Store Data}			& Store data regarding operations \\
+2 &\ref{sec:Generate summary}	& Generate summary reports of the data that has been gathered\\
+3 &\ref{sec:Security}			& Take steps to prevent malicious tampering\\
+4 &\ref{sec:Interface}			& Highly usable interface\\ 
+5 &\ref{sec:Backups}			& Prevent loss or corruption of data\\
+6 &\ref{sec:Platform}			& Runs on existing platform\\
 \end{tabular}
+\begin{comment}
+The first 2 are to be considered absolutely critical. The software cannot be considered useful if those features are absent.
+
+What are the security implications of storing identifiable time sheet info for employees??
+\end{comment}
+
 \subsection{Functional requirements}
-The functional requirements are listed in order of importance.
-\subsubsection{Store Data}
+ 
+\subsubsection{Store Data}\label{sec:Store Data}
 \paragraph{---:} ---
 
-\subsubsection{Generate summary reports}
+\subsubsection{Generate summary reports}\label{sec:Generate summary}
 \paragraph{---:} ---
 
-\subsubsection{Interactions}
+\subsubsection{Security}\label{sec:Security}
+\paragraph{---:} ---
+
+\subsubsection{Backups}\label{sec:Backups}
 \paragraph{---:} ---
 
 \subsection{Non-functional requirements}
-\setcounter{subsubsection}{0}
-\setcounter{paragraph}{0}
-\subsubsection{Intuitive input format}
+
+\subsubsection{Intuitive input format}\label{sec:Interface}
+\paragraph{---:} ---
+
+\subsubsection{Runs on an existing platform}\label{sec:Platform}
+Available system is Windows 2003 server.
 \paragraph{---:} ---
 
 
