@@ -1,9 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%
-%
+%Software Requirements Document
+%Created by Blake Eggemeyer 2012 Feb 10 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[12pt]{article}
@@ -96,7 +93,7 @@ The Community Project Tracking software will assist users in the storing and sum
 \subsection{Definitions}
 \begin{enumerate}
 \item \textbf{Program:}  
-\item \textbf{Poject:}  
+\item \textbf{Project:}  
 \item \textbf{Task:}  
 \item \textbf{Tool/Equipment:}  
 \end{enumerate}
@@ -147,7 +144,7 @@ The requirements are listed and ordered in a priority list so that their order c
 \begin{tabular}{l|lp{5.25in}}
 \multicolumn{3}{c}{Priority List}\\
 1 &\ref{sec:Store Data}			& Store data regarding operations \\
-2 &\ref{sec:Generate summary}	& Generate summary reports of the data that has been gathered\\
+2 &\ref{sec:Reports}			& Generate summary reports of the data that has been gathered\\
 3 &\ref{sec:Security}			& Take steps to prevent malicious tampering\\
 4 &\ref{sec:Interface}			& Highly usable interface\\ 
 5 &\ref{sec:Backups}			& Prevent loss or corruption of data\\
@@ -163,31 +160,24 @@ What are the security implications of storing identifiable time sheet info for e
  
 \subsubsection{Store Data}\label{sec:Store Data}
 \paragraph{Staff Members:} Data regarding a staff members work day will be collected and stored.
-\paragraph{:}
 
-\subsubsection{Generate summary reports}\label{sec:Generate summary}
-\paragraph{---:} ---
+\subsubsection{Reports}\label{sec:Reports}
 
 \subsubsection{Security}\label{sec:Security}
-\paragraph{---:} ---
+The impact of storing personally identifiable time sheet data must be considered.
 
 \subsubsection{Backups}\label{sec:Backups}
-\paragraph{---:} ---
 
 \subsection{Non-functional requirements}
+\subsubsection{Interface}\label{sec:Interface}
+\paragraph{User friendly:} Determine what User wants from the interface.
 
-\subsubsection{Intuitive input format}\label{sec:Interface}
-\paragraph{---:} ---
-
-\subsubsection{Runs on an existing platform}\label{sec:Platform}
-Available system is Windows 2003 server.
-\paragraph{---:} ---
-
+\subsubsection{Platform}\label{sec:Platform}
+Several existing platforms are available. One of which is on site at the clients offices running a Windows 2003 server. The others are a few off site servers that are used for a number of different projects.
 
 \subsection{Performance requirements}
 
 \subsection{Software system attributes}
-
 
 \end{document}
 
