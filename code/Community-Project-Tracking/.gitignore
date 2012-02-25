@@ -1,0 +1,18 @@
+#gitignore for grails projects
+
+*.iws
+*Db.properties
+*Db.script
+*.war
+
+.classpath
+.project
+.settings
+eclipse
+stacktrace.log
+target
+target-eclipse
+/plugins
+#/test/reports #not in grails 2?
+/web-app/plugins
+/web-app/WEB_INF/classes
