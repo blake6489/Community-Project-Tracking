@@ -1,5 +1,16 @@
 README
 
-Nothing to read here ... yet
+Would this be an ok place to discuss stuff?
 
-Devin was here.
+I think we could use a more elegent name.  Ask Julie to name it?
+
+How to import the grails app into sts
+
+On the commandline:
+cd code/Community-Project-Tracking/
+grails integrate-with --eclipse
+
+Then in sts:
+File > import...
+General >  Existing Projects into Workspace
+Select root directory: code/Community-Project-Tracking/
