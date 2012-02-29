@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 00:06
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 13:40
 entering extended mode
  %&-line parsing enabled.
 **SRD.tex
@@ -302,26 +302,26 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )) (./SRD.aux)
 \openout1 = `SRD.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 50.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-Package hyperref Info: Link coloring OFF on input line 48.
+Package hyperref Info: Link coloring OFF on input line 50.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -331,8 +331,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count109
 )
-LaTeX Info: Redefining \ref on input line 48.
-LaTeX Info: Redefining \pageref on input line 48.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
  (./SRD.out)
 (./SRD.out)
 \@outlinefile=\write3
@@ -353,18 +353,18 @@ LaTeX Info: Redefining \pageref on input line 48.
 \everyMPtoPDFconversion=\toks30
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 54.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 56.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 57.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 58.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 60.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 62.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 73.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 75.
  (./SRD.toc
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 1.
@@ -385,44 +385,49 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.74 \newpage
-              [1] [2]
-Overfull \hbox (7.81793pt too wide) in paragraph at lines 104--105
+l.76 \newpage
+              [1]
+Overfull \hbox (7.81793pt too wide) in paragraph at lines 106--107
 []\T1/phv/b/n/12 Tool/Equipment: \T1/phv/m/n/12 Cor-re-sponds to "Equip-ment Us
 ed" on the orig-i-nal timesheet.
  []
 
-
-Overfull \hbox (19.00531pt too wide) in paragraph at lines 116--121
+[2]
+Overfull \hbox (19.00531pt too wide) in paragraph at lines 118--123
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--168
+Overfull \hbox (15.55693pt too wide) in paragraph at lines 131--141
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
 
  []
 
 
-Overfull \hbox (15.55693pt too wide) in paragraph at lines 150--168
-[] 
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
+
  []
 
 [3] [4] [5] (./SRD.aux) ) 
 Here is how much of TeX's memory you used:
- 6119 strings out of 495061
- 83021 string characters out of 1182621
- 161563 words of memory out of 3000000
+ 6117 strings out of 495061
+ 83007 string characters out of 1182621
+ 162563 words of memory out of 3000000
  9109 multiletter control sequences out of 15000+50000
  39593 words of font info for 54 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 41i,9n,36p,316b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,36p,269b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}
 </usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf
 -texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/urw/helvetic/uhvro8a.pfb>
-Output written on SRD.pdf (6 pages, 58025 bytes).
+Output written on SRD.pdf (6 pages, 57610 bytes).
 PDF statistics:
- 223 PDF objects out of 1000 (max. 8388607)
- 68 named destinations out of 1000 (max. 500000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
  193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

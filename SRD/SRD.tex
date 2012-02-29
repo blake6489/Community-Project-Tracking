@@ -31,6 +31,8 @@
 \renewcommand{\rmdefault}{phv}
 \renewcommand{\ttdefault}{pcr}
 
+
+
 \setlength{\parindent}{0pt}
 
 
@@ -96,7 +98,7 @@ The Community Project Tracking software will assist users in the storing and sum
 \item \textbf{User:} A person who uses the software directly. All users will have individual login accounts.
 %any alternatives to 'worker'
 \item \textbf{Worker:} The person(s) responsible for the work done on a timesheet. A User has a corresponding Worker, but there may be Workers without User accounts, e.g., "boyscouts."
-\item \textbf{Project:} Seen at top of timesheet, e.g., "Clean Team." Internally, I see no difference between "project" and "program", but we should find out if differentiating them externally is critical. I just went with "project" because "program" has a particular meaning to programmers.
+\item \textbf{Project:} Seen at top of timesheet, e.g., "Clean Team."
 \item \textbf{Program:} 
 \item \textbf{Activity:} Left column of timesheet, e.g., "Ice Chipping."
 \item \textbf{Location:} Top row of timesheet, e.g., "CORE 1st - 3rd." The word "location" isn't actually on the sheet.
@@ -138,14 +140,14 @@ Written with the IEEE Recommended Practice for Software Requirements Specificati
 \end{tabular}
 
 \subsection{User Characteristics}
-
+The CPT is intended to have a narrow user-base with a small number of administrators and a small number of users.
 
 \subsection{Constraints}
+
 
 \subsection{Assumptions and Dependencies}
 \begin{enumerate}
 \item \textbf{Language:} The interface for the user is in English.
-\item \textbf{Platform:} 
 \end{enumerate}
 
 \subsection{Apportioning of requirements}
@@ -202,6 +204,7 @@ The impact of storing personally identifiable time sheet data must be considered
 Several existing platforms are available. One of which is on site at the clients offices running a Windows 2003 server. The others are a few off site servers that are used for a number of different projects.
 
 \subsection{Performance requirements}
+The software must store the input data for the duration necessary to create reports on the data.
 
 \subsection{Software system attributes}
 
