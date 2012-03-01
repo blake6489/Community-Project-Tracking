@@ -93,7 +93,7 @@ The Community Project Tracking software will assist users in the storing and sum
 \paragraph{TBD:} Acronym for To Be Determined. This is used in this document to signify that the information necessary for a part of this document is ``To Be Determined''.
 \paragraph{Client:} Julie Engfer, the Office Manager for Festival of Fairbanks.
 \paragraph{User:} The person, or persons, who operate or interact directly with the product.
-\paragraph{Administrator:} A user with special permissions as specified in section 3.1.2 User Management.
+\paragraph{Administrator:} A user with special permissions as specified in section 3.1.2 User Management. Also referred to as Admin.
 \paragraph{Will:} Requirements with this marker are guaranteed to be in the final delivered product.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{CPT:} The name of this application.
@@ -167,28 +167,45 @@ What are the security implications of storing identifiable time sheet info for e
 \end{comment}
 
 \subsection{Functional requirements}
- 
-\subsubsection{Store Data}\label{sec:Store Data}
-\paragraph{} Workers' task data will be collected and stored.
-\paragraph{} Administrators will be able to create and edit these task records on behalf of any worker.
-\paragraph{} Users will be able to specify a comment along with each task record.
-\paragraph{} Task records will also have a worker and project specified automatically based on the user.
 
 \subsubsection{User Management}\label{sec:Users}
-\paragraph{} The CPT will have varying levels of access for users, with administrators having the most control.
-\paragraph{} Administrators will be able to maintain a list of application users.
-\paragraph{} Administrators will be able to maintain a list of locations.
-\paragraph{} Administrators will be able to maintain a list of tools.
-\paragraph{} Administrators will be able to maintain a list of activities.
-\paragraph{} Administrators will be able to maintain a list of workers.
-\paragraph{} Administrators will be able to maintain a list of projects/programs.
-\paragraph{} Users will be able to create a task record of the work done that day by specifying the amount of hours spent doing each activity at each location with each tool.
+\paragraph{} The CPT will have two levels of accounts: general Users and Admins. Everything a User can do can be done by an Admin.
+\paragraph{} Accounts will require password authentication.
+\paragraph{} The CPT will ship with one Admin account.
+\paragraph{} Admins will be able to create other Admin and User accounts.
+\paragraph{} Admins will be able to reset User passwords.
+\paragraph{} Users will be able to change their own password.
 
-%how are groups handled
+%do this?
+%\subsubsection{Project Management}\label{sec:Project Management}
+%\paragraph{} Admins will be able to create and delete Projects/Programs.
+%\paragraph{} Admins will be able to select which Locations will appear on this Project/Program's timesheet.
+%\paragraph{} Admins will be able to select which Activities will appear on this Project/Program's timesheet.
+
+\subsubsection{Data Management}\label{sec:Data Management}
+\paragraph{} Admins will be able to create, modify, and delete Projects/Programs.
+\paragraph{} Admins will be able to create, modify, and delete Locations.
+\paragraph{} Admins will be able to create, modify, and delete Activities.
+\paragraph{} Admins will be able to create, modify, and delete Tools.
+\paragraph{} Admins will be able to create, modify, and delete Workers.
+
+\subsubsection{Timesheets}\label{sec:Timesheets}
+\paragraph{} For a Project/Program on a given day, a User will be able to submit the hours worked with each Tool for each Activity for each Location.
+\paragraph{} Users will optionally be able to provide a comment for a Project/Program on a given day.
+\paragraph{} Admins will be able to submit hours on behalf of a given Worker.
+\paragraph{} Users will be able to browse their previously submitted Timesheets.
+\paragraph{} Admins will be able to view and edit the Timesheets of any User.
+\paragraph{} When viewing timesheets, the weather for the day will be displayed.
+%finding it convenient to use the word "Timesheet" here.  Need to redo the definition if we stick with this.
 
 \subsubsection{Reports}\label{sec:Reports}
-\paragraph{} The CPT will use the daily input data to generate reports as described by the client.
-\paragraph{} Administrators will be able generate reports by specifying a time period and project to see the total hours spent for each activity at each location with each tool.
+%\paragraph{} The CPT will use the daily input data to generate reports as described by the client. %Too abstract?
+\paragraph{} For a given Project/Program over a given time period, Admins will be able to see the total hours worked with each Tool for each Activity for each Location.
+ 
+\subsubsection{Data Storage}\label{sec:Data Storage}
+\paragraph{} All data entered into the CPT will be saved to disk.
+
+%how are groups handled
 
 \subsubsection{Security}\label{sec:Security}
 The impact of storing personally identifiable time sheet data must be considered.
