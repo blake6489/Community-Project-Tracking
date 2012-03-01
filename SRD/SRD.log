@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 17:29
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 17:38
 entering extended mode
  %&-line parsing enabled.
 **SRD.tex
@@ -387,47 +387,53 @@ been already used, duplicate ignored
                    \relax 
 l.76 \newpage
               [1]
-Overfull \hbox (7.81793pt too wide) in paragraph at lines 108--109
-[]\T1/phv/b/n/12 Tool/Equipment: \T1/phv/m/n/12 Cor-re-sponds to "Equip-ment Us
-ed" on the orig-i-nal timesheet.
+Overfull \hbox (1.86029pt too wide) in paragraph at lines 97--98
+ \T1/phv/m/n/10.95 1.3.0.7 Ad-min-is-tra-tor:[] \T1/phv/m/n/12 A user with spe-
+cial per-mis-sions as spec-i-fied in sec-tion 3.1.2
  []
 
 [2]
-Overfull \hbox (19.00531pt too wide) in paragraph at lines 120--125
+Overfull \hbox (21.93864pt too wide) in paragraph at lines 109--110
+ \T1/phv/m/n/10.95 1.3.0.15 Tool/Equipment:[] \T1/phv/m/n/12 Cor-re-sponds to "
+Equip-ment Used" on the orig-i-nal timesheet.
+ []
+
+
+Overfull \hbox (19.00531pt too wide) in paragraph at lines 121--126
 [] 
  []
 
 
-Overfull \hbox (15.55693pt too wide) in paragraph at lines 133--143
+Overfull \hbox (15.55693pt too wide) in paragraph at lines 134--144
 [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
 
  []
 
-[3] [4] [5] (./SRD.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
+
+ []
+
+[4] [5] [6] (./SRD.aux) ) 
 Here is how much of TeX's memory you used:
- 6118 strings out of 495061
- 83014 string characters out of 1182621
- 162563 words of memory out of 3000000
+ 6119 strings out of 495061
+ 83217 string characters out of 1182621
+ 160563 words of memory out of 3000000
  9109 multiletter control sequences out of 15000+50000
  39593 words of font info for 54 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 41i,9n,36p,269b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,36p,269b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}
 </usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf
 -texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/urw/helvetic/uhvro8a.pfb>
-Output written on SRD.pdf (6 pages, 57905 bytes).
+Output written on SRD.pdf (7 pages, 58620 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
+ 228 PDF objects out of 1000 (max. 8388607)
+ 68 named destinations out of 1000 (max. 500000)
  193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
