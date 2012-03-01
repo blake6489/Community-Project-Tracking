@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 13:40
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.1)  29 FEB 2012 17:29
 entering extended mode
  %&-line parsing enabled.
 **SRD.tex
@@ -387,35 +387,35 @@ been already used, duplicate ignored
                    \relax 
 l.76 \newpage
               [1]
-Overfull \hbox (7.81793pt too wide) in paragraph at lines 106--107
+Overfull \hbox (7.81793pt too wide) in paragraph at lines 108--109
 []\T1/phv/b/n/12 Tool/Equipment: \T1/phv/m/n/12 Cor-re-sponds to "Equip-ment Us
 ed" on the orig-i-nal timesheet.
  []
 
 [2]
-Overfull \hbox (19.00531pt too wide) in paragraph at lines 118--123
+Overfull \hbox (19.00531pt too wide) in paragraph at lines 120--125
 [] 
  []
 
 
-Overfull \hbox (15.55693pt too wide) in paragraph at lines 131--141
+Overfull \hbox (15.55693pt too wide) in paragraph at lines 133--143
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
 
  []
 
 [3] [4] [5] (./SRD.aux) ) 
 Here is how much of TeX's memory you used:
- 6117 strings out of 495061
- 83007 string characters out of 1182621
+ 6118 strings out of 495061
+ 83014 string characters out of 1182621
  162563 words of memory out of 3000000
  9109 multiletter control sequences out of 15000+50000
  39593 words of font info for 54 fonts, out of 3000000 for 9000
@@ -425,9 +425,9 @@ Here is how much of TeX's memory you used:
 </usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf
 -texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/urw/helvetic/uhvro8a.pfb>
-Output written on SRD.pdf (6 pages, 57610 bytes).
+Output written on SRD.pdf (6 pages, 57905 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
  193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
