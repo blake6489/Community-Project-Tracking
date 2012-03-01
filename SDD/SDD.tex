@@ -55,61 +55,6 @@
 
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-TODO:\\
-Domains\\
-* User\\
-* Role\\
-* Project\\
-* Location\\
-** name - 200 char\\
-* Tool\\
-** name - 200 char\\
-* Activity\\
-** name - 200 char\\
-
-Controllers\\
-
-* Project\\
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
-
-* Location\\
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
-
-* Tool\\
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
-
-* Activity\\
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
-
-Views\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titlepage}
@@ -158,6 +103,24 @@ The stakeholder in the design is also the client.
 \paragraph{Item:} Item refers to a data object. This object is either an appointment or a task.
 \paragraph{CSV:} CSV is an acronym for Comma Separated Value. This is a standard and common format of simple tabular data.
 
+\paragraph{GUI:} Acronym for Graphical User Interface. Used to refer to the look and feel the user experiences.
+\paragraph{Immediately:} Immediately refers to actions that will begin as soon as the user has given the input for the action to occur.
+\paragraph{Client:} Julie Engfer, the Office Manager for Festival of Fairbanks.
+\paragraph{Administrator:} A user with special permissions as specified in section 3.1.2 User Management.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{CPT:} The name of this application.
+%\paragraph{User:} A person who uses the software directly. All users will have individual login accounts.
+%any alternatives to 'worker'
+\paragraph{Worker:} The person(s) responsible for the hours worked in a Project. Users are also Workers, but there may be Workers that are not Users, e.g., "boyscouts."
+\paragraph{Project:} Seen at top of timesheet, e.g., "Bicycle Path."
+\paragraph{Program:} A project which occurs annually, e.g., "Clean Team."
+\paragraph{Activity:} The specific type of work a Worker does, e.g., "Ice Chipping."
+\paragraph{Location:} The place where an activity is done, e.g., "CORE 1st - 3rd."
+%one or the other?
+\paragraph{Tool/Equipment:} The implement used to complete an Activity. Corresponds to "Equipment Used" on the original timesheet.
+\paragraph{Comment:} A remark a User may optionally provide on the timesheet.
+\paragraph{Timesheet:} The name for the web page on which the various data are entered.
+
 \subsection{References}
 The {\tt 1998 - IEEE Standard for Information Technology -- Systems Design -- Software Design Descriptions} was referenced to produce this document.
 
@@ -178,23 +141,65 @@ The {\tt 1998 - IEEE Standard for Information Technology -- Systems Design -- So
 This project will use \e{Git} version control in conjunction with \e{GitHub} to keep track of changes. The repository can be reached at \url{https://github.com/blake6489/Community-Project-Tracking}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data Storage}\label{sec:Data Storage}
-\subsection{Data Dictionary}\label{sec:Data Dictionary}
-\subsubsection{Configuration} \label{sec:Configuration}
+\section{Domains}\label{sec:Domains}
+* User\\
+* Role\\
+* Project\\
+* Location\\
+** name - 200 char\\
+* Tool\\
+** name - 200 char\\
+* Activity\\
+** name - 200 char\\
 
+\subsection{Controllers}
 
+\subsubsection{Project}
+** index\\
+** list\\
+** create\\
+** save\\
+** show\\
+** edit\\
+** update\\
+**delete\\
 
-%%%%%%%%
-\section{Actions} \label{sec:Actions}
-\subsection{Terminal}
-\setcounter{paragraph}{0}
-\setcounter{subsubsection}{0}
+\subsubsection{Location}
+** index\\
+** list\\
+** create\\
+** save\\
+** show\\
+** edit\\
+** update\\
+**delete\\
+
+\subsubsection{Tool}
+** index\\
+** list\\
+** create\\
+** save\\
+** show\\
+** edit\\
+** update\\
+**delete\\
+
+\subsubsection{Activity}
+** index\\
+** list\\
+** create\\
+** save\\
+** show\\
+** edit\\
+** update\\
+**delete\\
+
+Views\\
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Views}
-\subsection{Viewing Active List}
 
-\subsection{Viewing All} \label{sec:View all}
 
 \section{Interface}
 
