@@ -1,0 +1,28 @@
+!!! 5
+%html
+	%head
+		%g:set(var="entityName" value="${message(code: 'location.label', default: 'Location')}")/
+		%title
+			%g:message(code="default.edit.label" args="[entityName]")/
+	%body
+		.nav(role="navigation")
+			%ul
+				%li
+					%a(class="home" href="${createLink(uri: '/')}")
+						%g:message(code="default.home.label")/
+				%li
+					%g:link(class="list" action="list")
+						%g:message(code="default.list.label" args="[entityName]")/
+				%li
+					%g:link(class="create" action="create")
+						%g:message(code="default.new.label" args="[entityName]")/
+		#edit-location.content.scaffold-edit(role="main")
+			%h1
+				%g:message(code="default.edit.label" args="[entityName]")/
+			%cpt:errors(bean="${locationInstance}")
+			%g:form(method="post")
+				%g:hiddenField(name="id" value="${locationInstance?.id}")/
+				%g:hiddenField(name="version" value="${locationInstance?.version}")/
+				%fieldset(class="form")
+					%g:render(template="form")/
+				%cpt:fieldsetEdit/

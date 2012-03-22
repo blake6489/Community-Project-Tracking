@@ -1,0 +1,29 @@
+!!! 5
+%html
+	%head
+		%g:set(var="entityName" value="${message(code: 'tool.label', default: 'Tool')}")/
+		%title
+			%g:message(code='default.list.label' args='[entityName]')/
+	%body
+		.nav(role="navigation")
+			%ul
+				%li
+					%a(class="home" href="${createLink(uri: '/')}")
+						%g:message(code='default.home.label')/
+				%li
+					%g:link(class="create" action="create")
+						%g:message(code="default.new.label" args="[entityName]")/
+		.content.scaffold-list(role="main")
+			%h1
+				%g:message(code="default.list.label" args="[entityName]")/
+			%table
+				%thead
+					%tr
+						%g:sortableColumn(property="name" title="${message(code: 'tool.name.label', default: 'Name')}")/
+				%tbody
+					%g:each(in="${toolInstanceList}" status="i" var="toolInstance")
+						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
+							%td
+								%g:link(action="show" id="${toolInstance.id}") ${fieldValue(bean: toolInstance, field: "name")}
+			%div(class="pagination")
+				%g:paginate(total="${toolInstanceTotal}")/

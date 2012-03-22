@@ -1,0 +1,23 @@
+!!! 5
+%html
+	%head
+		%g:set(var="entityName" value="${message(code: 'activity.label', default: 'Activity')}")/
+		%title
+			%g:message(code="default.create.label" args="[entityName]")/
+	%body
+		.nav(role="navigation")
+			%ul
+				%li
+					%a(class="home" href="${createLink(uri: '/')}")
+						%g:message(code="default.home.label")/
+				%li
+					%g:link(class="list" action="list")
+						%g:message(code="default.list.label" args="[entityName]")/
+		#create-activity.content.scaffold-create(role="main")
+			%h1
+				%g:message(code="default.create.label" args="[entityName]")/
+			%cpt:errors(bean="${activityInstance}")
+			%g:form(action="save")
+				%fieldset(class="form")
+					%g:render(template="form")/
+				%cpt:fieldsetCreate/

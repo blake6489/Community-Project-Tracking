@@ -1,0 +1,21 @@
+!!! 5
+%html
+	%head
+		%title
+			%g:layoutTitle(default='No Title')
+		%g:layoutHead/
+		<%--%link(rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css")--%>
+		%g:javascript(library='jquery')/
+		%r:layoutResources/
+	%body
+		%sec:ifNotLoggedIn
+			%g:render(template='/layouts/login')
+		%sec:ifLoggedIn
+			%sec:ifAnyGranted(roles='ROLE_ADMIN')
+				%g:render(template='/layouts/admin')
+			%sec:ifAnyGranted(roles='ROLE_USER')
+				%g:render(template='/layouts/user')
+			%g:if(test='${flash.message}')
+				#flash ${flash.message}
+			%g:layoutBody/
+		%r:layoutResources/

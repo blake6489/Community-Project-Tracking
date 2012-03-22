@@ -39,6 +39,7 @@ grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
+grails.sitemesh.default.layout = 'application'
 // enable Sitemesh preprocessing of GSP pages
 grails.views.gsp.sitemesh.preprocess = true
 // scaffolding templates configuration
@@ -91,11 +92,6 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
-
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'communityprojecttracking.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'communityprojecttracking.UserRole'
-grails.plugins.springsecurity.authority.className = 'communityprojecttracking.Role'
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'cpt.User'
