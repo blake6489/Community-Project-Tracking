@@ -142,17 +142,15 @@ This project will use \e{Git} version control in conjunction with \e{GitHub} to 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Domains}\label{sec:Domains}
-* User\\
-* Role\\
-* Project\\
-* Location\\
-** name - 200 char\\
-* Tool\\
-** name - 200 char\\
-* Activity\\
-** name - 200 char\\
+\subsection{User}
+\subsection{Role}
+\subsection{Project}
+\subsection{Location}
+\subsection{Tool}
+\subsection{Activity}
+\subsection{Worker}
 
-\subsection{Controllers}
+\section{Controllers}\label{sec:Controllers}
 
 \subsubsection{Project}
 ** index\\
@@ -199,6 +197,18 @@ Views\\
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Views}
+\subsection{Layouts}
+Layouts are application-wide views not tied to any specific controller. Layouts will be in the "views/layouts" folder.
+\subsubsection{application}
+This is the application-wide layout. It's reponsible for deciding what layout templates to render based on user access levels.
+It must also render flash messages to alleviate other views from having to do so.
+\subsubsection{\_login}
+This template renders when the user hasn't logged in. It'll contain an ajax form allowing the user to login.
+Once the user has successfully logged in, the page will refresh.
+\subsubsection{\_admin}
+This template renders when an admin is logged in. It'll contain links to parts of the application admins can access.
+\subsubsection{\_user}
+This template renders when a non-admin is logged in. Not sure what it'll show.
 
 
 \section{Interface}
