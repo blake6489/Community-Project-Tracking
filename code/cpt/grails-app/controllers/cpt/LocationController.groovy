@@ -1,9 +1,11 @@
 package cpt
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
 import cpt.Location;
 
+@Secured(['ROLE_ADMIN'])
 class LocationController {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
