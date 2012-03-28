@@ -97,3 +97,11 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'cpt.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'cpt.UserRole'
 grails.plugins.springsecurity.authority.className = 'cpt.Role'
+
+grails.plugins.springsecurity.auth.loginFormUrl = '/login'
+grails.plugins.springsecurity.auth.useForward = true
+//grails.plugins.springsecurity.auth.forceHttps = true
+grails.plugins.springsecurity.successHandler.alwaysUseDefault = true //disabling request saving lets ajax work
+grails.plugins.springsecurity.roleHierarchy = '''
+	ROLE_ADMIN > ROLE_USER
+'''

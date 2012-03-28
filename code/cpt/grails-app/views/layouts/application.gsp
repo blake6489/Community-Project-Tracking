@@ -12,20 +12,20 @@
   </head>
   <body>
     <sec:ifNotLoggedIn>
-      <g:render template='/layouts/login'></g:render>
+      <%-- todo --%>
     </sec:ifNotLoggedIn>
     <sec:ifLoggedIn>
-      <sec:ifAnyGranted roles='ROLE_ADMIN'>
+      <g:if test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN')}">
         <g:render template='/layouts/admin'></g:render>
-      </sec:ifAnyGranted>
-      <sec:ifAnyGranted roles='ROLE_USER'>
-        <g:render template='/layouts/user'></g:render>
-      </sec:ifAnyGranted>
-      <g:if test='${flash.message}'>
-        <div id='flash'>${flash.message}</div>
       </g:if>
-      <g:layoutBody />
+      <g:elseif test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_USER')}">
+        <g:render template='/layouts/user'></g:render>
+      </g:elseif>
     </sec:ifLoggedIn>
+    <g:if test='${flash.message}'>
+      <div id='flash'>${flash.message}</div>
+    </g:if>
+    <g:layoutBody />
     <r:layoutResources />
   </body>
 </html>

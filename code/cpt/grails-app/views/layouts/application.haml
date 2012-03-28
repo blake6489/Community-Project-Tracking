@@ -9,13 +9,13 @@
 		%r:layoutResources/
 	%body
 		%sec:ifNotLoggedIn
-			%g:render(template='/layouts/login')
+			<%-- todo --%>
 		%sec:ifLoggedIn
-			%sec:ifAnyGranted(roles='ROLE_ADMIN')
+			%g:if(test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_ADMIN')}")
 				%g:render(template='/layouts/admin')
-			%sec:ifAnyGranted(roles='ROLE_USER')
+			%g:elseif(test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_USER')}")
 				%g:render(template='/layouts/user')
-			%g:if(test='${flash.message}')
-				#flash ${flash.message}
-			%g:layoutBody/
+		%g:if(test='${flash.message}')
+			#flash ${flash.message}
+		%g:layoutBody/
 		%r:layoutResources/

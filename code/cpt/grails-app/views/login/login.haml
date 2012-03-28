@@ -1,0 +1,33 @@
+!!! 5
+%html
+	%head
+		%meta(name='layout' content='application')/
+		%title Login
+		%g:javascript(library='jquery')/
+		%r:layoutResources/
+	%body
+		Please Login
+		%form#loginForm(action='${postUrl}' method='POST' name='loginForm')
+			%input(type='hidden' name='ajax' value='true')/
+			%p
+				%label(for='username') Username:
+				%input#username(type='text' autofocus='true' name='j_username')
+			%p
+				%label(for='password') Password:
+				%input#password(type='password' name='j_password')
+			%p
+				%label(for='rememberMe') Remember me:
+				%input#rememberMe(type='checkbox' name='${rememberMeParameter}')/
+			%p
+				%input(type='submit' value='Login' onclick='ajaxLogin();return false')
+				
+		<%-- allow ajax submit --%>
+		:javascript
+			function ajaxLogin() {
+				var form = $('#loginForm')
+				$.post(form.attr('action'), form.serialize(), function(data, textStatus, jqXHR){
+					if (data.error) alert(data.error + '\nTODO: Get rid of this popup.')
+					else if (data.success) $(document).ajaxStop(function() { location.reload(true); });
+				})
+			}
+		%r:layoutResources/
