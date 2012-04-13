@@ -5,16 +5,8 @@
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
 	%body
-		.nav(role="navigation")
-			%ul
-				%li
-					%a(class="home" href="${createLink(uri: '/')}")
-						%g:message(code="default.home.label")/
-				%li
-					%g:link(class="list" action="list")
-						%g:message(code="default.list.label" args="[entityName]")/
 		#create-activity.content.scaffold-create(role="main")
-			%h1
+			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.create.label" args="[entityName]")/
 			%cpt:errors(bean="${activityInstance}")
 			%g:form(action="save")

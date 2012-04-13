@@ -8,27 +8,8 @@
     </title>
   </head>
   <body>
-    <div class='nav' role='navigation'>
-      <ul>
-        <li>
-          <a class='home' href="${createLink(uri: '/')}">
-            <g:message code='default.home.label' />
-          </a>
-        </li>
-        <li>
-          <g:link action='list' class='list'>
-            <g:message args='[entityName]' code='default.list.label' />
-          </g:link>
-        </li>
-        <li>
-          <g:link action='create' class='create'>
-            <g:message args='[entityName]' code='default.new.label' />
-          </g:link>
-        </li>
-      </ul>
-    </div>
     <div class='content scaffold-show' id='show-activity' role='main'>
-      <h1>
+      <h1 class='ui-widget-header ui-corner-all'>
         <g:message args='[entityName]' code='default.show.label' />
       </h1>
       <ol class='property-list activity'>
@@ -46,10 +27,7 @@
       <g:form>
         <fieldset class='buttons'>
           <g:hiddenField name='id' value='${activityInstance?.id}' />
-          <g:link action='edit' class='edit' id='${activityInstance?.id}'>
-            <g:message code='default.button.edit.label' default='Edit' />
-          </g:link>
-          <g:actionSubmit action='delete' class='delete' onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
+          <g:actionSubmit action='delete' class='delete jq-button' onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
         </fieldset>
       </g:form>
     </div>

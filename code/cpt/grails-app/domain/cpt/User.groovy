@@ -19,6 +19,12 @@ class User {
 	static mapping = {
 		password column: '`password`'
 	}
+	
+	static transients = ['type']
+	String getType() {
+		return UserRole.findByUser(this).role.authority
+		//return "asdf"
+	}
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this).collect { it.role } as Set

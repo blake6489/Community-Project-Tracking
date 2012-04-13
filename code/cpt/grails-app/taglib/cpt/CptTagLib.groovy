@@ -9,7 +9,7 @@ class CptTagLib {
 	}
 	
 	def fieldsetCreate = {
-		out << "<fieldset class='buttons'><input type='submit' class='save' value='${message(code: 'default.button.create.label', default: 'Create')}' /></fieldset>"
+		out << "<fieldset class='buttons'><input type='submit' class='save jq-button' value='${message(code: 'default.button.create.label', default: 'Create')}' /></fieldset>"
 	}
 	
 	def fieldsetEdit = {

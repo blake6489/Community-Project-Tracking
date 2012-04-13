@@ -1,0 +1,49 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12pt;
+}
+
+#header.ui-tabs {
+	padding: 0;
+}
+
+#header.ui-tabs ul {
+	padding-left: 1em;
+}
+
+.ui-widget-header {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0;
+	margin-bottom: .5em;
+	padding: .125em;
+	padding-left: .25em;
+}
+
+table.list {
+	width: 100%;
+	border-spacing: 0;
+}
+
+table.list th,
+table.list td {
+	padding: .5em;
+	text-align: left;
+}
+
+table.list thead tr {
+	background-color: #bbb;
+}
+
+table.list tr.odd {
+	background-color: #eee;
+}
+
+fieldset.buttons {
+	border:none;
+}

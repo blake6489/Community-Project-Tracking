@@ -1,1 +1,23 @@
-%h1 Layout for admin goes here
+%header#header
+	%ul
+		%li
+			%g:link(controller='home' action='home')
+				Home
+		%li
+			%g:link(controller='activity' action='list')
+				Activities
+		%li
+			%g:link(controller='location' action='list')
+				Locations
+		%li
+			%g:link(controller='tool' action='list')
+				Tools
+		%li
+			%g:link(controller='user' action='list')
+				Users
+		%li
+			%g:link(controller='home' action='grails')
+				Grails
+		%li
+			%g:link(controller='logout')
+				Logout

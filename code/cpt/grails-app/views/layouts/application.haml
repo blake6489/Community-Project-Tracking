@@ -6,6 +6,7 @@
 		%g:layoutHead/
 		<%--%link(rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css")--%>
 		%g:javascript(library='jquery')/
+		%r:require(module='cpt')/
 		%r:layoutResources/
 	%body
 		%sec:ifNotLoggedIn
@@ -17,5 +18,6 @@
 				%g:render(template='/layouts/user')
 		%g:if(test='${flash.message}')
 			#flash ${flash.message}
-		%g:layoutBody/
+		%div(style="padding: 1em")
+			%g:layoutBody/
 		%r:layoutResources/

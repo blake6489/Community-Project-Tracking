@@ -8,6 +8,7 @@
     <g:layoutHead />
     <%--%link(rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css")--%>
     <g:javascript library='jquery' />
+    <r:require module='cpt' />
     <r:layoutResources />
   </head>
   <body>
@@ -25,7 +26,9 @@
     <g:if test='${flash.message}'>
       <div id='flash'>${flash.message}</div>
     </g:if>
-    <g:layoutBody />
+    <div style='padding: 1em'>
+      <g:layoutBody />
+    </div>
     <r:layoutResources />
   </body>
 </html>

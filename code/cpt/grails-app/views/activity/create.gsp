@@ -8,22 +8,8 @@
     </title>
   </head>
   <body>
-    <div class='nav' role='navigation'>
-      <ul>
-        <li>
-          <a class='home' href="${createLink(uri: '/')}">
-            <g:message code='default.home.label' />
-          </a>
-        </li>
-        <li>
-          <g:link action='list' class='list'>
-            <g:message args='[entityName]' code='default.list.label' />
-          </g:link>
-        </li>
-      </ul>
-    </div>
     <div class='content scaffold-create' id='create-activity' role='main'>
-      <h1>
+      <h1 class='ui-widget-header ui-corner-all'>
         <g:message args='[entityName]' code='default.create.label' />
       </h1>
       <cpt:errors bean='${activityInstance}'></cpt:errors>

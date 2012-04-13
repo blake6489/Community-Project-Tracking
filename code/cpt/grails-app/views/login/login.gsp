@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content='application' name='layout' />
     <title>Login</title>
     <g:javascript library='jquery' />
+    <r:require module='cpt' />
     <r:layoutResources />
   </head>
   <body>

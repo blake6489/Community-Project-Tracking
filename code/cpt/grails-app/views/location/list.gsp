@@ -8,25 +8,11 @@
     </title>
   </head>
   <body>
-    <div class='nav' role='navigation'>
-      <ul>
-        <li>
-          <a class='home' href="${createLink(uri: '/')}">
-            <g:message code='default.home.label' />
-          </a>
-        </li>
-        <li>
-          <g:link action='create' class='create'>
-            <g:message args='[entityName]' code='default.new.label' />
-          </g:link>
-        </li>
-      </ul>
-    </div>
     <div class='content scaffold-list' role='main'>
-      <h1>
+      <h1 class='ui-widget-header ui-corner-all'>
         <g:message args='[entityName]' code='default.list.label' />
       </h1>
-      <table>
+      <table class='list ui-widget ui-widget-content ui-corner-all'>
         <thead>
           <tr>
             <g:sortableColumn property='name' title="${message(code: 'location.name.label', default: 'Name')}" />
@@ -45,6 +31,11 @@
       <div class='pagination'>
         <g:paginate total='${locationInstanceTotal}' />
       </div>
+    </div>
+    <div style='padding-top:1em;'>
+      <button class='jq-button' onclick="location.href='${createLink(action: 'create')}'">
+        <g:message args='[entityName]' code='default.new.label' />
+      </button>
     </div>
   </body>
 </html>

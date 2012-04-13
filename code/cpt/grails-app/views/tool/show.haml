@@ -5,19 +5,8 @@
 		%title
 			%g:message(code='default.show.label' args='[entityName]')/
 	%body
-		.nav(role="navigation")
-			%ul
-				%li
-					%a(class="home" href="${createLink(uri: '/')}")
-						%g:message(code="default.home.label")/
-				%li
-					%g:link(class="list" action="list")
-						%g:message(code="default.list.label" args="[entityName]")/
-				%li
-					%g:link(class="create" action="create")
-						%g:message(code="default.new.label" args="[entityName]")/
 		#show-tool.content.scaffold-show(role="main")
-			%h1
+			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.show.label" args="[entityName]")/
 			%ol(class="property-list tool")
 				%g:if(test="${toolInstance?.name}")
@@ -29,6 +18,4 @@
 			%g:form
 				%fieldset(class="buttons")
 					%g:hiddenField(name="id" value="${toolInstance?.id}")/
-					%g:link(class="edit" action="edit" id="${toolInstance?.id}")
-						%g:message(code="default.button.edit.label" default="Edit")/
-					%g:actionSubmit(class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');")/
+					%g:actionSubmit(class="delete jq-button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');")/
