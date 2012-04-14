@@ -19,12 +19,14 @@ class UrlMappings {
 		"/tools/$action/$id?"(controller: "tool"){constraints {action(validator: {!(it in ["list", "show"])})}}
 		
 		"/users"(controller: "user", action: "list")
+		name user_create: "/users/create"(controller:"user"){action = [GET:"create", POST:"save"]}
 		"/users/$id/$title?"(controller: "user", action: "show"){constraints {id(matches: /\d+/)}}
-		"/users/$action/$id?"(controller: "user"){constraints {action(validator: {!(it in ["list", "show"])})}}
+		name user_resetPassword: "/users/reset/$id?"(controller: "user", action: "resetPassword")
+		//"/users/$action/$id?"(controller: "user"){constraints {action(validator: {!(it in ["list", "show"])})}}
 		
 		//remove these before production
 		"/grails/"(controller: "home", action: "grails")
-		"/grails/$controller/$action?/$id?"{}
+		//"/grails/$controller/$action?/$id?"{}
 		"500"(view:'/error')
 	}
 }

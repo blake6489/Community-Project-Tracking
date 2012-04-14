@@ -1,28 +1,27 @@
-<%-- DO NOT MODIFY THIS FILE, IT IS AUTOMATICALLY GENERATED. INSTEAD MODIFY create.haml --%>
+<%-- DO NOT MODIFY THIS FILE, IT IS AUTOMATICALLY GENERATED. INSTEAD MODIFY resetPassword.haml --%>
 <!DOCTYPE html>
 <html>
   <head>
     <g:set value="${message(code: 'user.label', default: 'User')}" var='entityName' />
     <title>
-      <g:message args='[entityName]' code='default.create.label' />
+      Reset password for ${instance.username}
     </title>
   </head>
   <body>
     <h1 class='ui-widget-header ui-corner-all'>
-      <g:message args='[entityName]' code='default.create.label' />
+      Reset Password
     </h1>
     <cpt:errors bean='${instance}'></cpt:errors>
-    <g:form action='save' class='ui-widget ui-widget-content ui-corner-all'>
+    <g:form action='resetPassword' class='ui-widget ui-widget-content ui-corner-all' id='${instance.id}'>
+      <g:hiddenField name='id' value='${instance?.id}' />
+      <g:hiddenField name='version' value='${instance?.version}' />
       <fieldset class='table'>
-        <div class="${hasErrors(bean: instance, field: 'username', 'error')} row required">
+        <div class='row'>
           <div class='cell'>
-            <label for='username'>
-              <g:message code='user.username.label' default='Username' />
-              <span class='required-indicator'>*</span>
-            </label>
+            <g:message code='user.username.label' default='Username' />
           </div>
           <div class='cell'>
-            <g:textField name='username' required='' value='${instance?.username}' />
+            <g:fieldValue bean='${instance}' field='username' />
           </div>
         </div>
         <div class="${hasErrors(bean: instance, field: 'password', 'error')} row required">
@@ -48,19 +47,10 @@
             <input id='password2' name='password2' required='' type='password' />
           </div>
         </div>
-        <div class="${hasErrors(bean: instance, field: 'type', 'error')} row">
-          <div class='cell'>
-            <label for='type'>
-              <g:message code='user.type.label' default='Type' />
-              <span class='required-indicator'>*</span>
-            </label>
-          </div>
-          <div class='cell'>
-            <g:select from='${instance.constraints.type.inList}' name='type' value='${instance?.type}' valueMessagePrefix='user.type' />
-          </div>
-        </div>
       </fieldset>
-      <cpt:fieldsetCreate />
+      <fieldset class='buttons'>
+        <input class='jq-button' type='submit' value='Reset Password' />
+      </fieldset>
     </g:form>
   </body>
 </html>

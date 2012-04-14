@@ -5,6 +5,22 @@ body {
 	font-size: 12pt;
 }
 
+ul {
+	margin: 0;
+/*	padding: 0;
+	list-style-type: none;*/
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.table {display:table; border-spacing:1em;}
+.row {display:table-row}
+.cell {display:table-cell}
+
 #header.ui-tabs {
 	padding: 0;
 }
@@ -13,8 +29,22 @@ body {
 	padding-left: 1em;
 }
 
+#header.ui-tabs a {
+	cursor: pointer;
+}
+
 .ui-widget-header {
 	font-weight: normal;
+}
+
+.ui-state-error {
+	padding: .5em;
+	margin-bottom: 1em;
+}
+
+.ui-state-highlight {
+	padding: .5em;
+	margin-bottom: 1em;
 }
 
 h1 {
@@ -44,6 +74,31 @@ table.list tr.odd {
 	background-color: #eee;
 }
 
-fieldset.buttons {
+.pagination {
+	text-align: center;
+	padding: .5em;
+}
+
+.pagination a, .pagination .currentStep {
+	display: inline-block;
+	padding: .25em .5em;
+	text-decoration: none;
+	color: black;
+}
+
+.pagination .currentStep {
+	border: 1px solid black;
+}
+
+.pagination a:hover, .pagination a:focus {
+	text-decoration: underline;
+}
+
+.buttons {
 	border:none;
+	margin: 0 1em 1em 1em;
+}
+
+.error input, .error select, .error textarea{
+	border-color: red;
 }

@@ -5,19 +5,38 @@
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
 	%body
-		.nav(role="navigation")
-			%ul
-				%li
-					%a(class="home" href="${createLink(uri: '/')}")
-						%g:message(code="default.home.label")/
-				%li
-					%g:link(class="list" action="list")
-						%g:message(code="default.list.label" args="[entityName]")/
-		#create-user.content.scaffold-create(role="main")
-			%h1
-				%g:message(code="default.create.label" args="[entityName]")/
-			%cpt:errors(bean="${instance}")
-			%g:form(action="save")
-				%fieldset(class="form")
-					%g:render(template="form")/
-				%cpt:fieldsetCreate/
+		%h1.ui-widget-header.ui-corner-all
+			%g:message(code="default.create.label" args="[entityName]")/
+		%cpt:errors(bean="${instance}")
+		%g:form.ui-widget.ui-widget-content.ui-corner-all(action="save")
+			%fieldset.table
+				.row.required(class="${hasErrors(bean: instance, field: 'username', 'error')}")
+					.cell
+						%label(for="username")
+							%g:message(code="user.username.label" default="Username")/
+							%span(class="required-indicator") *
+					.cell
+						%g:textField(name="username" required="" value="${instance?.username}")/
+				.row.required(class="${hasErrors(bean: instance, field: 'password', 'error')}")
+					.cell
+						%label(for="password")
+							%g:message(code="user.password.label" default="Password")/
+							%span(class="required-indicator") *
+					.cell
+						%g:passwordField(name="password" required="")/
+				.row.required
+					.cell
+						%label(for="password2")
+							Retype
+							%g:message(code="user.password.label" default="Password")/
+							%span(class="required-indicator") *
+					.cell
+						%input(type="password" id="password2" name="password2" required="")/
+				.row(class="${hasErrors(bean: instance, field: 'type', 'error')}")
+					.cell
+						%label(for="type")
+							%g:message(code="user.type.label" default="Type")/
+							%span(class="required-indicator") *
+					.cell
+						%g:select(name="type" from="${instance.constraints.type.inList}" value="${instance?.type}" valueMessagePrefix="user.type")/
+			%cpt:fieldsetCreate/

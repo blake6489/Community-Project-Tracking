@@ -17,7 +17,7 @@
 			%g:elseif(test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_USER')}")
 				%g:render(template='/layouts/user')
 		%g:if(test='${flash.message}')
-			#flash ${flash.message}
+			#flash.ui-widget.ui-state-highlight.ui-corner-all ${flash.message}
 		%div(style="padding: 1em")
 			%g:layoutBody/
 		%r:layoutResources/

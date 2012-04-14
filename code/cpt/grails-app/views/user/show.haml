@@ -1,0 +1,25 @@
+!!! 5
+%html
+	%head
+		%g:set(var="entityName" value="${message(code: 'user.label', default: 'User')}")/
+		%title
+			%g:message(code="default.show.label" args="[entityName]")/
+	%body
+		%h1.ui-widget-header.ui-corner-all
+			%g:message(code="default.show.label" args="[entityName]")/
+		%cpt:errors(bean="${instance}")
+		.ui-widget.ui-widget-content.ui-corner-all
+			%ol.table
+				%li.row
+					.cell
+						%g:message(code="user.username.label" default="Username")/
+					.cell
+						%g:fieldValue(bean="${instance}" field="username")/
+				%li.row
+					.cell
+						%g:message(code="user.type.label" default="Type")/
+					.cell
+						%g:fieldValue(bean="${instance}" field="type")/
+			.buttons
+				%button.jq-button(onclick="location.href='${createLink(action: 'resetPassword', id: instance.id)}'")
+					Reset Password
