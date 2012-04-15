@@ -27,7 +27,7 @@ class UserController {
 		
 		if (!params.password.equals(params.password2)) {
 			instance.validate() //might as well report other errors too
-			instance.errors.rejectValue('password', 'Passwords do not match')
+			instance.errors.rejectValue('password', message(code:'default.password.mismatch.message'))
 			render(view: "create", model: [instance: instance])
 			return
 		}
@@ -38,7 +38,8 @@ class UserController {
 			return
 		}
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), instance.id])
+		//flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), instance.id])
+		flash.message = "User ${instance.username} created"
 		redirect(action: "show", id: instance.id)
 	}
 	
@@ -85,7 +86,7 @@ class UserController {
 			}
 			
 			if (!params.password.equals(params.password2)) {
-				instance.errors.rejectValue('password', 'Passwords do not match')
+			instance.errors.rejectValue('password', message(code:'default.password.mismatch.message'))
 				return [instance: instance]
 			}
 			

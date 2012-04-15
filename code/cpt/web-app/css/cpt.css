@@ -20,6 +20,8 @@ fieldset {
 .table {display:table; border-spacing:1em;}
 .row {display:table-row}
 .cell {display:table-cell}
+fieldset .cell:first-child {text-align:right; vertical-align:top; padding:5px 0;}
+.cell.r {padding:5px}
 
 #header.ui-tabs {
 	padding: 0;
@@ -33,9 +35,44 @@ fieldset {
 	cursor: pointer;
 }
 
+.subnav {
+	padding: 6px 0 0 2em;
+	border-bottom: 1px solid #ccc;
+	margin: 0 1em;
+}
+
+.subnav ul{
+	font-size: .9em;
+	list-style-type: none;
+	padding: 0;
+	margin-bottom: -1px;
+}
+
+.subnav li {
+	display: inline-block;
+	marginright: 1em;
+}
+
+.subnav a {
+	margin-bottom: 7px;
+}
+
+.subnav a.jq-active-button {
+	border: 1px solid #ccc;
+	border-bottom: 1px solid white;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	padding-bottom: 7px;
+	margin-bottom:0;
+}
+
+.main {padding:1em;}
+
 .ui-widget-header {
 	font-weight: normal;
 }
+
+*.ui-helper-hidden {display:none;}
 
 .ui-state-error {
 	padding: .5em;
@@ -44,7 +81,10 @@ fieldset {
 
 .ui-state-highlight {
 	padding: .5em;
-	margin-bottom: 1em;
+}
+
+.jq-active-button {
+	cursor: default;
 }
 
 h1 {
@@ -98,6 +138,8 @@ table.list tr.odd {
 	border:none;
 	margin: 0 1em 1em 1em;
 }
+.buttons .jq-button {width:6em;}
+.deletebutton {float:right;}
 
 .error input, .error select, .error textarea{
 	border-color: red;

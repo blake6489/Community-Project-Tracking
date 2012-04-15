@@ -8,25 +8,52 @@
     <r:layoutResources />
   </head>
   <body>
-    Please Login
-    <form action='${postUrl}' id='loginForm' method='POST' name='loginForm'>
-      <input name='ajax' type='hidden' value='true' />
-      <p>
-        <label for='username'>Username:</label>
-        <input autofocus='true' id='username' name='j_username' type='text' />
-      </p>
-      <p>
-        <label for='password'>Password:</label>
-        <input id='password' name='j_password' type='password' />
-      </p>
-      <p>
-        <label for='rememberMe'>Remember me:</label>
-        <input id='rememberMe' name='${rememberMeParameter}' type='checkbox' />
-      </p>
-      <p>
-        <input onclick='ajaxLogin();return false' type='submit' value='Login' />
-      </p>
-    </form>
+    <header id='header'>
+      <ul>
+        <li class='ui-tabs-selected ui-state-active'>
+          <g:link action='login' controller='login'>
+            Login
+          </g:link>
+        </li>
+      </ul>
+    </header>
+    <div class='main'>
+      <h1 class='ui-widget-header ui-corner-all'>
+        Please Login
+      </h1>
+      <form action='${postUrl}' class='ui-widget ui-widget-content ui-corner-all' id='loginForm' method='POST' name='loginForm'>
+        <input name='ajax' type='hidden' value='true' />
+        <fieldset class='table'>
+          <div class='row'>
+            <div class='cell'>
+              <label for='username'>Username:</label>
+            </div>
+            <div class='cell'>
+              <input autofocus='true' id='username' name='j_username' type='text' />
+            </div>
+          </div>
+          <div class='row'>
+            <div class='cell'>
+              <label for='password'>Password:</label>
+            </div>
+            <div class='cell'>
+              <input id='password' name='j_password' type='password' />
+            </div>
+          </div>
+          <div class='row'>
+            <div class='cell'>
+              <label for='rememberMe'>Remember me:</label>
+            </div>
+            <div class='cell'>
+              <input id='rememberMe' name='${rememberMeParameter}' type='checkbox' />
+            </div>
+          </div>
+        </fieldset>
+        <div class='buttons'>
+          <input class='jq-button' onclick='ajaxLogin();return false' type='submit' value='Login' />
+        </div>
+      </form>
+    </div>
     <%-- allow ajax submit --%>
     <script type='text/javascript'>
       //<![CDATA[

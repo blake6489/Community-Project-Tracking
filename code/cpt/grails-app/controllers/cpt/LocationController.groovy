@@ -20,29 +20,61 @@ class LocationController {
 	}
 
 	def create() {
-		[locationInstance: new Location(params)]
+		if(request.get) {
+			return [instance: new Location(), names: ""]
+		}
+		else if(request.post) {
+			return save()
+		}
 	}
 
 	def save() {
-		def locationInstance = new Location(params)
-		if (!locationInstance.save(flush: true)) {
-			render(view: "create", model: [locationInstance: locationInstance])
-			return
+		def instance = new Location()
+		def newInstance
+		int nameCount = 0
+		Location.withTransaction { status ->
+			params.names.eachLine { line, i ->
+				if(line.length() > 0) {
+					nameCount++
+					newInstance = new Location(name: line)
+					if(!newInstance.save()) {
+						status.setRollbackOnly()
+						for(error in newInstance.errors.allErrors) {
+							instance.errors.reject("Line ${i+1}: ${message(error:error)}")
+						}
+					}
+				}
+			}
 		}
-
-		flash.message = message(code: 'default.created.message', args: [message(code: 'location.label', default: 'Location'), locationInstance.id])
-		redirect(action: "show", id: locationInstance.id)
+		if(instance.errors.hasErrors()) {
+			return [instance: instance, names: params.names]
+		}
+		else {
+			if(nameCount == 1) {
+				flash.message = "Location ${newInstance.name} created"
+				redirect(action: "show", id: newInstance.id)
+			}
+			else {
+				flash.message = "${nameCount} locations created"
+				redirect(action: "list")
+			}
+		}
 	}
 
 	def show() {
-		def locationInstance = Location.get(params.id)
-		if (!locationInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
-			redirect(action: "list")
-			return
+		if(request.get) {
+			def instance = Location.get(params.id)
+			if (!instance) {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+				redirect(action: "list")
+				return
+			}
+	
+			[instance: instance]
 		}
-
-		[locationInstance: locationInstance]
+		else if(request.post) {
+			return update()
+		}
 	}
 
 	def edit() {
@@ -57,8 +89,8 @@ class LocationController {
 	}
 
 	def update() {
-		def locationInstance = Location.get(params.id)
-		if (!locationInstance) {
+		def instance = Location.get(params.id)
+		if (!instance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
 			redirect(action: "list")
 			return
@@ -66,24 +98,24 @@ class LocationController {
 
 		if (params.version) {
 			def version = params.version.toLong()
-			if (locationInstance.version > version) {
-				locationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+			if (instance.version > version) {
+				instance.errors.rejectValue("version", "default.optimistic.locking.failure",
 						[message(code: 'location.label', default: 'Location')] as Object[],
 						"Another user has updated this Location while you were editing")
-				render(view: "edit", model: [locationInstance: locationInstance])
+				render(view: "show", model: [instance: instance])
 				return
 			}
 		}
 
-		locationInstance.properties = params
+		instance.properties = params
 
-		if (!locationInstance.save(flush: true)) {
-			render(view: "edit", model: [locationInstance: locationInstance])
+		if (!instance.save(flush: true)) {
+			render(view: "show", model: [instance: instance])
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'location.label', default: 'Location'), locationInstance.id])
-		redirect(action: "show", id: locationInstance.id)
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'location.label', default: 'Location'), instance.id])
+		redirect(action: "show", id: instance.id)
 	}
 
 	def delete() {

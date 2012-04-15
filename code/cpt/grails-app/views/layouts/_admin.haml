@@ -15,9 +15,10 @@
 		%li
 			%g:link(controller='user' action='list')
 				Users
-		%li
+		%li(style="float:right")
 			%g:link(controller='home' action='grails')
 				Grails
-		%li
+		%li(style="float:right")
 			%g:link(controller='logout')
 				Logout
+				%sec:username/

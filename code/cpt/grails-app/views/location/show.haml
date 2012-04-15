@@ -5,17 +5,32 @@
 		%title
 			%g:message(code='default.show.label' args='[entityName]')/
 	%body
-		#show-location.content.scaffold-show(role="main")
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(action='list')
+						%g:message(code="default.list.label" args="[entityName]")/
+				%li
+					%g:link.jq-button.jq-active-button(action='create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
 			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.show.label" args="[entityName]")/
-			%ol(class="property-list location")
-				%g:if(test="${locationInstance?.name}")
-					%li(class="fieldcontain")
-						%span(id="name-label" class="property-label")
-							%g:message(code="location.name.label" default="Name")/
-						%span(class="property-value" aria-labelledby="name-label")
-							%g:fieldValue(bean="${locationInstance}" field="name")/
-			%g:form
-				%fieldset(class="buttons")
-					%g:hiddenField(name="id" value="${locationInstance?.id}")/
-					%g:actionSubmit(class="delete jq-button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');")/
+			%cpt:errors(bean="${instance}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="show" id="${instance.id}" class="${instance?.errors.hasErrors() ? 'write' : 'read'}")
+				%g:hiddenField(name="id" value="${instance?.id}")/
+				%g:hiddenField(name="version" value="${instance?.version}")/
+				%fieldset.table
+					.row
+						.cell
+							%label(for="name")
+								%g:message(code="location.name.label" default="Name")/
+								%span(class="required-indicator") *
+						.cell.r
+							%g:fieldValue(bean="${instance}" field="name")/
+						.cell.w
+							%g:textField(name="name" required="" value="${instance?.name}")/
+				.buttons
+					%cpt:rwButton/
+					%g:submitButton.jq-button.w(name="update" value="${message(code: 'default.button.update.label', default: 'Update')}")/
+					%cpt:deleteButton/

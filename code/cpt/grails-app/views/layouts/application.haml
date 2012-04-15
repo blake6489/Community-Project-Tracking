@@ -9,6 +9,8 @@
 		%r:require(module='cpt')/
 		%r:layoutResources/
 	%body
+		%g:if(test='${flash.message}')
+			#flash.ui-widget.ui-state-highlight ${flash.message}
 		%sec:ifNotLoggedIn
 			<%-- todo --%>
 		%sec:ifLoggedIn
@@ -16,8 +18,5 @@
 				%g:render(template='/layouts/admin')
 			%g:elseif(test="${org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils.ifAnyGranted('ROLE_USER')}")
 				%g:render(template='/layouts/user')
-		%g:if(test='${flash.message}')
-			#flash.ui-widget.ui-state-highlight.ui-corner-all ${flash.message}
-		%div(style="padding: 1em")
-			%g:layoutBody/
+		%g:layoutBody/
 		%r:layoutResources/

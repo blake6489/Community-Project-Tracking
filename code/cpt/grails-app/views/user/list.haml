@@ -5,22 +5,28 @@
 		%title
 			%g:message(code='default.list.label' args='[entityName]')/
 	%body
-		%h1.ui-widget-header.ui-corner-all
-			%g:message(code="default.list.label" args="[entityName]")/
-		%div(style="margin-bottom:1em;")
-			%button.jq-button(onclick="location.href='${createLink(mapping: 'user_create')}'")
-				%g:message(code="default.new.label" args="[entityName]")/
-		%table.list.ui-widget.ui-widget-content.ui-corner-all
-			%thead
-				%tr
-					%g:sortableColumn(property="username" title="${message(code: 'user.username.label', default: 'User')}")/
-					%g:sortableColumn(property="type" title="${message(code: 'user.type.label', default: 'Type')}")/
-			%tbody
-				%g:each(in="${list}" status="i" var="instance")
-					%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
-						%td
-							%g:link(action="show" id="${instance.id}" params='[title:"${instance.username}"]') ${fieldValue(bean: instance, field: "username")}
-						%td
-							${instance.type}
-		%div(class="pagination")
-			%g:paginate(total="${total}")/
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button.jq-active-button(action='list')
+						%g:message(code="default.list.label" args="[entityName]")/
+				%li
+					%g:link.jq-button(mapping='user_create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				%g:message(code="default.list.label" args="[entityName]")/
+			%table.list.ui-widget.ui-widget-content.ui-corner-all
+				%thead
+					%tr
+						%g:sortableColumn(property="username" title="${message(code: 'user.username.label', default: 'User')}")/
+						%g:sortableColumn(property="type" title="${message(code: 'user.type.label', default: 'Type')}")/
+				%tbody
+					%g:each(in="${list}" status="i" var="instance")
+						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
+							%td
+								%g:link(action="show" id="${instance.id}" params='[title:"${instance.username}"]') ${fieldValue(bean: instance, field: "username")}
+							%td
+								${instance.type}
+			%div(class="pagination")
+				%g:paginate(total="${total}")/

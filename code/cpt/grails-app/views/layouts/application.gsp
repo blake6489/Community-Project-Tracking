@@ -12,6 +12,9 @@
     <r:layoutResources />
   </head>
   <body>
+    <g:if test='${flash.message}'>
+      <div class='ui-widget ui-state-highlight' id='flash'>${flash.message}</div>
+    </g:if>
     <sec:ifNotLoggedIn>
       <%-- todo --%>
     </sec:ifNotLoggedIn>
@@ -23,12 +26,7 @@
         <g:render template='/layouts/user'></g:render>
       </g:elseif>
     </sec:ifLoggedIn>
-    <g:if test='${flash.message}'>
-      <div class='ui-widget ui-state-highlight ui-corner-all' id='flash'>${flash.message}</div>
-    </g:if>
-    <div style='padding: 1em'>
-      <g:layoutBody />
-    </div>
+    <g:layoutBody />
     <r:layoutResources />
   </body>
 </html>

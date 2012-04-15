@@ -5,11 +5,28 @@
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
 	%body
-		#create-location.content.scaffold-create(role="main")
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(action='list')
+						%g:message(code="default.list.label" args="[entityName]")/
+				%li
+					%g:link.jq-button.jq-active-button(action='create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
 			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.create.label" args="[entityName]")/
-			%cpt:errors(bean="${locationInstance}")
-			%g:form(action="save")
-				%fieldset(class="form")
-					%g:render(template="form")/
+			%cpt:errors(bean="${instance}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="create")
+				%fieldset.table
+					.row.required(class="${hasErrors(bean: instance, field: 'name', 'error')}")
+						.cell
+							%label(for="names")
+								Names
+								%span(class="required-indicator") *
+								%br/
+								%span
+									(one per line)
+						.cell
+							%g:textArea(name="names" required="" value="${names}")/
 				%cpt:fieldsetCreate/

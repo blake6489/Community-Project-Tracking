@@ -20,4 +20,10 @@ function createHeader() {
 $(function(){
 	createHeader()
 	$('.jq-button').button()
+	$('.jq-active-button').button('disable').addClass('ui-state-active').removeClass('ui-state-disabled')
+	$('.read .w').addClass('ui-helper-hidden')
+	$('.write .r').addClass('ui-helper-hidden')
+	$('.rwbutton').click(function(event) {
+		$(event.target).closest('.read, .write').find('.r, .w').toggleClass('ui-helper-hidden')
+	});
 });
