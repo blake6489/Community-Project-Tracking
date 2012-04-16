@@ -1,7 +1,7 @@
 !!! 5
 %html
 	%head
-		%g:set(var="entityName" value="${message(code: 'location.label', default: 'Location')}")/
+		%g:set(var="entityName" value="${message(code: 'location.label')}")/
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
 	%body
@@ -19,14 +19,14 @@
 			%cpt:errors(bean="${instance}")
 			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="create")
 				%fieldset.table
-					.row.required(class="${hasErrors(bean: instance, field: 'name', 'error')}")
+					.row.required(class="${hasErrors(bean: instance, 'error')}")
 						.cell
 							%label(for="names")
 								Names
-								%span(class="required-indicator") *
 								%br/
-								%span
-									(one per line)
+								(one per line)
+						.cell
+							.required-indicator *
 						.cell
 							%g:textArea(name="names" required="" value="${names}")/
 				%cpt:fieldsetCreate/

@@ -18,17 +18,21 @@
 				%g:message(code="default.show.label" args="[entityName]")/
 			%cpt:errors(bean="${instance}")
 			.ui-widget.ui-widget-content.ui-corner-all
-				%ol.table
+				%ul.table
 					%li.row
 						.cell
-							%g:message(code="user.username.label" default="Username")/
-						.cell
-							%g:fieldValue(bean="${instance}" field="username")/
+							%label
+								%g:message(code="user.username.label" default="Username")/
+						.cell.r
+							%div
+								%g:fieldValue(bean="${instance}" field="username")/
 					%li.row
 						.cell
-							%g:message(code="user.type.label" default="Type")/
-						.cell
-							%g:fieldValue(bean="${instance}" field="type")/
+							%label
+								%g:message(code="user.type.label" default="Type")/
+						.cell.r
+							%div
+								%g:fieldValue(bean="${instance}" field="type")/
 				.buttons
 					%button.jq-button(onclick="location.href='${createLink(action: 'resetPassword', id: instance.id)}'")
 						Reset Password

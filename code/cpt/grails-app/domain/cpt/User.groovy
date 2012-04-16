@@ -5,6 +5,7 @@ class User {
 	transient springSecurityService
 
 	String username
+	String uniqueUsername
 	String password
 	String type
 	Worker worker
@@ -14,7 +15,14 @@ class User {
 	boolean passwordExpired
 
 	static constraints = {
-		username blank: false, unique: true
+		username blank: false, validator: { val, obj ->
+			def other = User.findByUniqueUsername(obj.uniqueUsername)
+			if(other && other.id != obj.id) {
+				if(other.username.equals(obj.username)) return 'default.not.unique.message'
+				else return ['default.too.similar.message', other.username]
+			} 
+		}
+		uniqueUsername blank: true, nullable: true//, bindable: false
 		password blank: false
 		type inList: ['user', 'admin']//, bindable: false
 		worker nullable: true
@@ -22,6 +30,11 @@ class User {
 
 	static mapping = {
 		password column: '`password`'
+	}
+	
+	void setUsername(String value) {
+		uniqueUsername = value.toLowerCase()
+		username = value
 	}
 	
 	//allows creating of a User and its UserRole. Use this instead of save()
@@ -43,7 +56,6 @@ class User {
 				}
 			}
 		}
-		log.error(this.errors)
 		return user
 	}
 

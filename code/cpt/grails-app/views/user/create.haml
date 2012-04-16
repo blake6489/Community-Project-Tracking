@@ -23,14 +23,16 @@
 						.cell
 							%label(for="username")
 								%g:message(code="user.username.label" default="Username")/
-								%span(class="required-indicator") *
+						.cell
+							.required-indicator *
 						.cell
 							%g:textField(name="username" required="" value="${instance?.username}")/
 					.row.required(class="${hasErrors(bean: instance, field: 'password', 'error')}")
 						.cell
 							%label(for="password")
 								%g:message(code="user.password.label" default="Password")/
-								%span(class="required-indicator") *
+						.cell
+							.required-indicator *
 						.cell
 							%g:passwordField(name="password" required="")/
 					.row.required
@@ -38,14 +40,16 @@
 							%label(for="password2")
 								Retype
 								%g:message(code="user.password.label" default="Password")/
-								%span(class="required-indicator") *
+						.cell
+							.required-indicator *
 						.cell
 							%input(type="password" id="password2" name="password2" required="")/
 					.row(class="${hasErrors(bean: instance, field: 'type', 'error')}")
 						.cell
 							%label(for="type")
 								%g:message(code="user.type.label" default="Type")/
-								%span(class="required-indicator") *
+						.cell
+							.required-indicator *
 						.cell
 							%g:select(name="type" from="${instance.constraints.type.inList}" value="${instance?.type}" valueMessagePrefix="user.type")/
 				%cpt:fieldsetCreate/

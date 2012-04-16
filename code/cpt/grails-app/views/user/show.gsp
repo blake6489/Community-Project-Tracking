@@ -28,24 +28,32 @@
       </h1>
       <cpt:errors bean='${instance}'></cpt:errors>
       <div class='ui-widget ui-widget-content ui-corner-all'>
-        <ol class='table'>
+        <ul class='table'>
           <li class='row'>
             <div class='cell'>
-              <g:message code='user.username.label' default='Username' />
+              <label>
+                <g:message code='user.username.label' default='Username' />
+              </label>
             </div>
-            <div class='cell'>
-              <g:fieldValue bean='${instance}' field='username' />
+            <div class='cell r'>
+              <div>
+                <g:fieldValue bean='${instance}' field='username' />
+              </div>
             </div>
           </li>
           <li class='row'>
             <div class='cell'>
-              <g:message code='user.type.label' default='Type' />
+              <label>
+                <g:message code='user.type.label' default='Type' />
+              </label>
             </div>
-            <div class='cell'>
-              <g:fieldValue bean='${instance}' field='type' />
+            <div class='cell r'>
+              <div>
+                <g:fieldValue bean='${instance}' field='type' />
+              </div>
             </div>
           </li>
-        </ol>
+        </ul>
         <div class='buttons'>
           <button class='jq-button' onclick="location.href='${createLink(action: 'resetPassword', id: instance.id)}'">
             Reset Password

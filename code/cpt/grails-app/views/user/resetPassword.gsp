@@ -33,18 +33,25 @@
         <fieldset class='table'>
           <div class='row'>
             <div class='cell'>
-              <g:message code='user.username.label' default='Username' />
+              <label>
+                <g:message code='user.username.label' default='Username' />
+              </label>
             </div>
+            <div class='cell'></div>
             <div class='cell'>
-              <g:fieldValue bean='${instance}' field='username' />
+              <div>
+                <g:fieldValue bean='${instance}' field='username' />
+              </div>
             </div>
           </div>
           <div class="${hasErrors(bean: instance, field: 'password', 'error')} row required">
             <div class='cell'>
               <label for='password'>
                 <g:message code='user.password.label' default='Password' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <g:passwordField name='password' required='' />
@@ -55,8 +62,10 @@
               <label for='password2'>
                 Retype
                 <g:message code='user.password.label' default='Password' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <input id='password2' name='password2' required='' type='password' />

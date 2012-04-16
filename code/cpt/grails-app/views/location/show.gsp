@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'location.label', default: 'Location')}" var='entityName' />
+    <g:set value="${message(code: 'location.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.show.label' />
     </title>
@@ -16,7 +16,7 @@
           </g:link>
         </li>
         <li>
-          <g:link action='create' class='jq-button jq-active-button'>
+          <g:link action='create' class='jq-button'>
             <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
@@ -26,23 +26,27 @@
       <h1 class='ui-widget-header ui-corner-all'>
         <g:message args='[entityName]' code='default.show.label' />
       </h1>
-      <cpt:errors bean='${instance}'></cpt:errors>
-      <g:form action='show' class="${instance?.errors.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instance.id}'>
-        <g:hiddenField name='id' value='${instance?.id}' />
-        <g:hiddenField name='version' value='${instance?.version}' />
+      <cpt:errors bean='${instanceW}'></cpt:errors>
+      <g:form action='show' class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instanceW?.id}'>
+        <g:hiddenField name='id' value='${instanceW?.id}' />
+        <g:hiddenField name='version' value='${instanceW?.version}' />
         <fieldset class='table'>
-          <div class='row'>
+          <div class="${hasErrors(bean: instanceW, field: 'name', 'error')} row required">
             <div class='cell'>
               <label for='name'>
                 <g:message code='location.name.label' default='Name' />
-                <span class='required-indicator'>*</span>
               </label>
             </div>
+            <div class='cell w'>
+              <div class='required-indicator'>*</div>
+            </div>
             <div class='cell r'>
-              <g:fieldValue bean='${instance}' field='name' />
+              <div>
+                <g:fieldValue bean='${instanceR}' field='name' />
+              </div>
             </div>
             <div class='cell w'>
-              <g:textField name='name' required='' value='${instance?.name}' />
+              <g:textField name='name' required='' value='${instanceW?.name}' />
             </div>
           </div>
         </fieldset>

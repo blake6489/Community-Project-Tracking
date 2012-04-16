@@ -27,11 +27,6 @@
       </g:link>
     </li>
     <li style='float:right'>
-      <g:link action='grails' controller='home'>
-        Grails
-      </g:link>
-    </li>
-    <li style='float:right'>
       <g:link controller='logout'>
         Logout
         <sec:username />

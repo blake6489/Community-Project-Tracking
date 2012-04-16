@@ -19,17 +19,23 @@
 				%fieldset.table
 					.row
 						.cell
-							%label(for='username') Username:
+							%label(for='username') Username
+						.cell
+							.required-indicator
 						.cell
 							%input#username(type='text' autofocus='true' name='j_username')
 					.row
 						.cell
-							%label(for='password') Password:
+							%label(for='password') Password
+						.cell
+							.required-indicator
 						.cell
 							%input#password(type='password' name='j_password')
 					.row
 						.cell
-							%label(for='rememberMe') Remember me:
+							%label(for='rememberMe') Remember me
+						.cell
+							.required-indicator
 						.cell
 							%input#rememberMe(type='checkbox' name='${rememberMeParameter}')/
 				.buttons

@@ -15,22 +15,12 @@ class BootStrap {
 			new User(type: 'admin', username: 'admin', enabled: true, password: 'a').createWithUserRole(true)
 			new User(type: 'user', username: 'user', enabled: true, password: 'a').createWithUserRole(true)
 		}
-		new Location(name: 'one').save()
-		new Location(name: 'two').save()
-		new Location(name: 'three').save()
-		new Location(name: 'four').save()
-		new Location(name: 'five').save()
-		new Location(name: 'six').save()
-		new Location(name: 'seven').save()
-		new Location(name: 'eight').save()
-		new Location(name: 'nine').save()
-		new Location(name: 'ten').save()
-		new Location(name: 'eleven').save()
-		new Location(name: 'twelve').save()
-		new Location(name: 'thirteen').save()
-		new Location(name: 'fourteen').save()
-		new Location(name: 'fifteen').save()
-		new Location(name: 'sixteen').save()
+		new Location(name: '1st-3rd Core Area').save()
+		new Location(name: '4th-7th').save()
+		new Location(name: 'Lacey to Dunkle').save()
+		new Location(name: 'Cushman to Wickersham & Bridge').save()
+		new Location(name: 'Griffen to Wendell & Bridge').save()
+		new Location(name: 'North Cushman').save()
 	}
 
 	def destroy = {

@@ -26,7 +26,10 @@
         <fieldset class='table'>
           <div class='row'>
             <div class='cell'>
-              <label for='username'>Username:</label>
+              <label for='username'>Username</label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'></div>
             </div>
             <div class='cell'>
               <input autofocus='true' id='username' name='j_username' type='text' />
@@ -34,7 +37,10 @@
           </div>
           <div class='row'>
             <div class='cell'>
-              <label for='password'>Password:</label>
+              <label for='password'>Password</label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'></div>
             </div>
             <div class='cell'>
               <input id='password' name='j_password' type='password' />
@@ -42,7 +48,10 @@
           </div>
           <div class='row'>
             <div class='cell'>
-              <label for='rememberMe'>Remember me:</label>
+              <label for='rememberMe'>Remember me</label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'></div>
             </div>
             <div class='cell'>
               <input id='rememberMe' name='${rememberMeParameter}' type='checkbox' />

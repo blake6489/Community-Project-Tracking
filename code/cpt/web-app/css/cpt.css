@@ -17,11 +17,18 @@ fieldset {
 	border: none;
 }
 
-.table {display:table; border-spacing:1em;}
-.row {display:table-row}
-.cell {display:table-cell}
-fieldset .cell:first-child {text-align:right; vertical-align:top; padding:5px 0;}
-.cell.r {padding:5px}
+.table {display:table;}
+.row {display:table-row;}
+.cell {display:table-cell; padding-top:1em; vertical-align:top;}
+.cell:first-child {padding-left:1em;}
+.cell:last-child {padding-right:1em;}
+.cell div {padding: 5px 0;}
+.cell .required-indicator {width:30px; text-align: center;}
+.cell label {display:block; text-align:right; padding:5px 0;}
+.cell.r div {padding-left: 33px}
+
+fieldset .cell input[type=text], fieldset .cell input[type=password] {width: 20em;}
+fieldset .cell textArea {width: 20em;height:5em;}
 
 #header.ui-tabs {
 	padding: 0;
@@ -36,7 +43,7 @@ fieldset .cell:first-child {text-align:right; vertical-align:top; padding:5px 0;
 }
 
 .subnav {
-	padding: 6px 0 0 2em;
+	padding: 1em 0 0 2em;
 	border-bottom: 1px solid #ccc;
 	margin: 0 1em;
 }
@@ -136,9 +143,9 @@ table.list tr.odd {
 
 .buttons {
 	border:none;
-	margin: 0 1em 1em 1em;
+	margin: 1em;
 }
-.buttons .jq-button {width:6em;}
+.rwbutton {width:6em;}
 .deletebutton {float:right;}
 
 .error input, .error select, .error textarea{

@@ -8,15 +8,18 @@ class UrlMappings {
 		
 		"/activities"(controller: "activity", action: "list")
 		"/activities/$id/$title?"(controller: "activity", action: "show"){constraints {id(matches: /\d+/)}}
-		"/activities/$action/$id?"(controller: "activity"){constraints {action(validator: {!(it in ["list", "show"])})}}
+		"/activities/create"(controller: "activity", action: "create")
+		"/activities/delete/$id"(controller: "activity", action: "delete")
 		
 		"/locations"(controller: "location", action: "list")
 		"/locations/$id/$title?"(controller: "location", action: "show"){constraints {id(matches: /\d+/)}}
-		"/locations/$action/$id?"(controller: "location"){constraints {action(validator: {!(it in ["list", "show"])})}}
+		"/locations/create"(controller: "location", action: "create")
+		"/locations/delete/$id"(controller: "location", action: "delete")
 		
 		"/tools"(controller: "tool", action: "list")
 		"/tools/$id/$title?"(controller: "tool", action: "show"){constraints {id(matches: /\d+/)}}
-		"/tools/$action/$id?"(controller: "tool"){constraints {action(validator: {!(it in ["list", "show"])})}}
+		"/tools/create"(controller: "tool", action: "create")
+		"/tools/delete/$id"(controller: "tool", action: "delete")
 		
 		"/users"(controller: "user", action: "list")
 		name user_create: "/users/create"(controller:"user"){action = [GET:"create", POST:"save"]}
@@ -26,7 +29,6 @@ class UrlMappings {
 		
 		//remove these before production
 		"/grails/"(controller: "home", action: "grails")
-		//"/grails/$controller/$action?/$id?"{}
 		"500"(view:'/error')
 	}
 }

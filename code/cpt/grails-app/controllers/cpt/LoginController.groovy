@@ -53,24 +53,6 @@ class LoginController {
 	}
 
 	/**
-	 * Show the login page.
-	 */
-	def auth() {
-
-		def config = SpringSecurityUtils.securityConfig
-
-		if (springSecurityService.isLoggedIn()) {
-			redirect uri: config.successHandler.defaultTargetUrl
-			return
-		}
-
-		String view = 'auth'
-		String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
-		render view: view, model: [postUrl: postUrl,
-					rememberMeParameter: config.rememberMe.parameter]
-	}
-
-	/**
 	 * The redirect action for Ajax requests.
 	 */
 	def authAjax = {
@@ -94,7 +76,7 @@ class LoginController {
 	 */
 	def full() {
 		def config = SpringSecurityUtils.securityConfig
-		render view: 'auth', params: params,
+		render view: 'login', params: params,
 				model: [hasCookie: authenticationTrustResolver.isRememberMe(SCH.context?.authentication),
 					postUrl: "${request.contextPath}${config.apf.filterProcessesUrl}"]
 	}

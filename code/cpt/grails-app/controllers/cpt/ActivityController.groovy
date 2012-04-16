@@ -1,103 +1,129 @@
 package cpt
 
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured(['ROLE_ADMIN'])
 class ActivityController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index() {
-        redirect(action: "list", params: params)
-    }
+	def index() {
+		redirect(action: "list", params: params)
+	}
 
-    def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [activityInstanceList: Activity.list(params), activityInstanceTotal: Activity.count()]
-    }
+	def list() {
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		[activityInstanceList: Activity.list(params), activityInstanceTotal: Activity.count()]
+	}
 
-    def create() {
-        [activityInstance: new Activity(params)]
-    }
+	def create() {
+		if(request.get) {
+			return [instance: new Activity(), names: ""]
+		}
+		else if(request.post) {
+			return save()
+		}
+	}
 
-    def save() {
-        def activityInstance = new Activity(params)
-        if (!activityInstance.save(flush: true)) {
-            render(view: "create", model: [activityInstance: activityInstance])
-            return
-        }
+	def save() {
+		def instance = new Activity()
+		def newInstance
+		int nameCount = 0
+		Activity.withTransaction { status ->
+			params.names.eachLine { line, i ->
+				if(line.length() > 0) {
+					nameCount++
+					newInstance = new Activity(name: line)
+					if(!newInstance.save()) {
+						status.setRollbackOnly()
+						for(error in newInstance.errors.allErrors) {
+							instance.errors.reject("Line ${i+1}: ${message(error:error)}")
+						}
+					}
+				}
+			}
+		}
+		if(instance.errors.hasErrors()) {
+			return [instance: instance, names: params.names]
+		}
+		else {
+			if(nameCount == 1) {
+				flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label'), newInstance.name])
+				redirect(action: "show", id: newInstance.id)
+			}
+			else {
+				flash.message = message(code: 'default.batch.created.message', args: [nameCount, message(code: 'activity.labels')])
+				redirect(action: "list")
+			}
+		}
+	}
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'Activity'), activityInstance.id])
-        redirect(action: "show", id: activityInstance.id)
-    }
+	def show() {
+		if(request.get) {
+			def instance = Activity.get(params.id)
+			if (!instance) {
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label'), params.id])
+				redirect(action: "list")
+				return
+			}
+	
+			[instanceR: instance, instanceW: instance]
+		}
+		else if(request.post) {
+			return update()
+		}
+	}
 
-    def show() {
-        def activityInstance = Activity.get(params.id)
-        if (!activityInstance) {
+	def update() {
+		def instanceW = Activity.get(params.id)
+		if (!instanceW) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label'), params.id])
+			redirect(action: "list")
+			return
+		}
+		
+		//store copy of old values
+		def instanceR = new Activity()
+		instanceR.properties = instanceW.properties
+		instanceW.properties = params
+		
+		if (params.version) {
+			def version = params.version.toLong()
+			if (instanceW.version > version) {
+				instanceW.errors.rejectValue("version", "default.optimistic.locking.failure",
+						[message(code: 'activity.label', default: 'Activity')] as Object[],
+						"Another user has updated this Activity while you were editing")
+				render(view: "show", model: [instanceR: instanceR, instanceW: instanceW])
+				return
+			}
+		}
+
+		if (!instanceW.save(flush: true)) {
+			render(view: "show", model: [instanceR: instanceR, instanceW: instanceW])
+			return
+		}
+
+		flash.message = message(code: 'default.renamed.message', args: [message(code: 'activity.label'), instanceR.name, instanceW.name])
+		redirect(action: "show", id: instanceW.id)
+	}
+
+	def delete() {
+		def activityInstance = Activity.get(params.id)
+		if (!activityInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "list")
-            return
-        }
+			redirect(action: "list")
+			return
+		}
 
-        [activityInstance: activityInstance]
-    }
-
-    def edit() {
-        def activityInstance = Activity.get(params.id)
-        if (!activityInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "list")
-            return
-        }
-
-        [activityInstance: activityInstance]
-    }
-
-    def update() {
-        def activityInstance = Activity.get(params.id)
-        if (!activityInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "list")
-            return
-        }
-
-        if (params.version) {
-            def version = params.version.toLong()
-            if (activityInstance.version > version) {
-                activityInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'activity.label', default: 'Activity')] as Object[],
-                          "Another user has updated this Activity while you were editing")
-                render(view: "edit", model: [activityInstance: activityInstance])
-                return
-            }
-        }
-
-        activityInstance.properties = params
-
-        if (!activityInstance.save(flush: true)) {
-            render(view: "edit", model: [activityInstance: activityInstance])
-            return
-        }
-
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'activity.label', default: 'Activity'), activityInstance.id])
-        redirect(action: "show", id: activityInstance.id)
-    }
-
-    def delete() {
-        def activityInstance = Activity.get(params.id)
-        if (!activityInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            activityInstance.delete(flush: true)
+		try {
+			activityInstance.delete(flush: true)
 			flash.message = message(code: 'default.deleted.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
+			redirect(action: "list")
+		}
+		catch (DataIntegrityViolationException e) {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
-            redirect(action: "show", id: params.id)
-        }
-    }
+			redirect(action: "show", id: params.id)
+		}
+	}
 }

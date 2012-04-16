@@ -33,8 +33,10 @@
             <div class='cell'>
               <label for='username'>
                 <g:message code='user.username.label' default='Username' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <g:textField name='username' required='' value='${instance?.username}' />
@@ -44,8 +46,10 @@
             <div class='cell'>
               <label for='password'>
                 <g:message code='user.password.label' default='Password' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <g:passwordField name='password' required='' />
@@ -56,8 +60,10 @@
               <label for='password2'>
                 Retype
                 <g:message code='user.password.label' default='Password' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <input id='password2' name='password2' required='' type='password' />
@@ -67,8 +73,10 @@
             <div class='cell'>
               <label for='type'>
                 <g:message code='user.type.label' default='Type' />
-                <span class='required-indicator'>*</span>
               </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
             </div>
             <div class='cell'>
               <g:select from='${instance.constraints.type.inList}' name='type' value='${instance?.type}' valueMessagePrefix='user.type' />

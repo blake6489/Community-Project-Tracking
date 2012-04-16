@@ -51,11 +51,11 @@ class LocationController {
 		}
 		else {
 			if(nameCount == 1) {
-				flash.message = "Location ${newInstance.name} created"
+				flash.message = message(code: 'default.created.message', args: [message(code: 'location.label'), newInstance.name])
 				redirect(action: "show", id: newInstance.id)
 			}
 			else {
-				flash.message = "${nameCount} locations created"
+				flash.message = message(code: 'default.batch.created.message', args: [nameCount, message(code: 'location.labels')])
 				redirect(action: "list")
 			}
 		}
@@ -65,74 +65,66 @@ class LocationController {
 		if(request.get) {
 			def instance = Location.get(params.id)
 			if (!instance) {
-				flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label'), params.id])
 				redirect(action: "list")
 				return
 			}
 	
-			[instance: instance]
+			[instanceR: instance, instanceW: instance]
 		}
 		else if(request.post) {
 			return update()
 		}
 	}
 
-	def edit() {
-		def locationInstance = Location.get(params.id)
-		if (!locationInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
-			redirect(action: "list")
-			return
-		}
-
-		[locationInstance: locationInstance]
-	}
-
 	def update() {
-		def instance = Location.get(params.id)
-		if (!instance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+		def instanceW = Location.get(params.id)
+		if (!instanceW) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label'), params.id])
 			redirect(action: "list")
 			return
 		}
-
+		
+		//store copy of old values
+		def instanceR = new Location()
+		instanceR.properties = instanceW.properties
+		instanceW.properties = params
+		
 		if (params.version) {
 			def version = params.version.toLong()
-			if (instance.version > version) {
-				instance.errors.rejectValue("version", "default.optimistic.locking.failure",
+			if (instanceW.version > version) {
+				instanceW.errors.rejectValue("version", "default.optimistic.locking.failure",
 						[message(code: 'location.label', default: 'Location')] as Object[],
 						"Another user has updated this Location while you were editing")
-				render(view: "show", model: [instance: instance])
+				render(view: "show", model: [instanceR: instanceR, instanceW: instanceW])
 				return
 			}
 		}
 
-		instance.properties = params
-
-		if (!instance.save(flush: true)) {
-			render(view: "show", model: [instance: instance])
+		if (!instanceW.save(flush: true)) {
+			render(view: "show", model: [instanceR: instanceR, instanceW: instanceW])
 			return
 		}
 
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'location.label', default: 'Location'), instance.id])
-		redirect(action: "show", id: instance.id)
+		flash.message = message(code: 'default.renamed.message', args: [message(code: 'location.label'), instanceR.name, instanceW.name])
+		redirect(action: "show", id: instanceW.id)
 	}
 
 	def delete() {
 		def locationInstance = Location.get(params.id)
 		if (!locationInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label'), params.id])
 			redirect(action: "list")
 			return
 		}
 
 		try {
 			locationInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'location.label'), params.id])
 			redirect(action: "list")
 		}
 		catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'location.label', default: 'Location'), params.id])
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'location.label'), params.id])
 			redirect(action: "show", id: params.id)
 		}
 	}

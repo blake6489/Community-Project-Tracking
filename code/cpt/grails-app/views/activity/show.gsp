@@ -2,33 +2,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'activity.label', default: 'Activity')}" var='entityName' />
+    <g:set value="${message(code: 'activity.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.show.label' />
     </title>
   </head>
   <body>
-    <div class='content scaffold-show' id='show-activity' role='main'>
+    <div class='subnav'>
+      <ul>
+        <li>
+          <g:link action='list' class='jq-button'>
+            <g:message args='[entityName]' code='default.list.label' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button'>
+            <g:message args='[entityName]' code='default.new.label' />
+          </g:link>
+        </li>
+      </ul>
+    </div>
+    <div class='main'>
       <h1 class='ui-widget-header ui-corner-all'>
         <g:message args='[entityName]' code='default.show.label' />
       </h1>
-      <ol class='property-list activity'>
-        <g:if test='${activityInstance?.name}'>
-          <li class='fieldcontain'>
-            <span class='property-label' id='name-label'>
-              <g:message code='activity.name.label' default='Name' />
-            </span>
-            <span aria-labelledby='name-label' class='property-value'>
-              <g:fieldValue bean='${activityInstance}' field='name' />
-            </span>
-          </li>
-        </g:if>
-      </ol>
-      <g:form>
-        <fieldset class='buttons'>
-          <g:hiddenField name='id' value='${activityInstance?.id}' />
-          <g:actionSubmit action='delete' class='delete jq-button' onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />
+      <cpt:errors bean='${instanceW}'></cpt:errors>
+      <g:form action='show' class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instanceW?.id}'>
+        <g:hiddenField name='id' value='${instanceW?.id}' />
+        <g:hiddenField name='version' value='${instanceW?.version}' />
+        <fieldset class='table'>
+          <div class="${hasErrors(bean: instanceW, field: 'name', 'error')} row required">
+            <div class='cell'>
+              <label for='name'>
+                <g:message code='activity.name.label' default='Name' />
+              </label>
+            </div>
+            <div class='cell w'>
+              <div class='required-indicator'>*</div>
+            </div>
+            <div class='cell r'>
+              <div>
+                <g:fieldValue bean='${instanceR}' field='name' />
+              </div>
+            </div>
+            <div class='cell w'>
+              <g:textField name='name' required='' value='${instanceW?.name}' />
+            </div>
+          </div>
         </fieldset>
+        <div class='buttons'>
+          <cpt:rwButton />
+          <g:submitButton class='jq-button w' name='update' value="${message(code: 'default.button.update.label', default: 'Update')}" />
+          <cpt:deleteButton />
+        </div>
       </g:form>
     </div>
   </body>
