@@ -12,7 +12,7 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button jq-active-button' controller='project'>
+          <g:link action='list' class='jq-button' controller='project'>
             <g:message code='project.labels' />
           </g:link>
         </li>
@@ -23,7 +23,7 @@
         </li>
         <li>
           <g:link action='create' class='jq-button jq-active-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>

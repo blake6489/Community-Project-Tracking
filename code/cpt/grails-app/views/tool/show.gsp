@@ -28,14 +28,14 @@
         </li>
         <li>
           <g:link action='create' class='jq-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>
     </div>
     <div class='main'>
       <h1 class='ui-widget-header ui-corner-all'>
-        ${entityName}: ${instanceR.name}
+        ${entityName}: ${fieldValue(bean: instanceR, field: "name")}
       </h1>
       <cpt:errors bean='${instanceW}'></cpt:errors>
       <g:form action='show' class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instanceW?.id}'>

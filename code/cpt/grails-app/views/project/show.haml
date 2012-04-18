@@ -16,10 +16,10 @@
 						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button(action='create')
-						%g:message(code="default.new.label" args="['']")/
+						%g:message(code="default.new.label" args="[entityName]")/
 		.main
 			%h1.ui-widget-header.ui-corner-all
-				${entityName}: ${fieldValue(bean: instance, field: "name")}
+				${entityName}: ${fieldValue(bean: instanceR, field: "name")}
 			%cpt:errors(bean="${instanceW}")
 			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="show" id="${instanceW?.id}" class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'}")
 				%g:hiddenField(name="id" value="${instanceW?.id}")/

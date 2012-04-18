@@ -22,13 +22,13 @@
           </g:link>
         </li>
         <li>
-          <g:link action='list' class='jq-button jq-active-button' controller='tool'>
+          <g:link action='list' class='jq-button' controller='tool'>
             <g:message code='tool.labels' />
           </g:link>
         </li>
         <li>
           <g:link action='create' class='jq-button jq-active-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>

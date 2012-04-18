@@ -9,14 +9,14 @@
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button.jq-active-button(controller='project' action='list')
+					%g:link.jq-button(controller='project' action='list')
 						%g:message(code="project.labels")/
 				%li
 					%g:link.jq-button(controller='timesheetTemplate' action='list')
 						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button.jq-active-button(action='create')
-						%g:message(code="default.new.label" args="['']")/
+						%g:message(code="default.new.label" args="[entityName]")/
 		.main
 			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.create.label" args="[entityName]")/

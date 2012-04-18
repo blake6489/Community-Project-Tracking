@@ -17,7 +17,7 @@
           </g:link>
         </li>
         <li>
-          <g:link action='list' class='jq-button jq-active-button' controller='location'>
+          <g:link action='list' class='jq-button' controller='location'>
             <g:message code='location.labels' />
           </g:link>
         </li>
@@ -28,7 +28,7 @@
         </li>
         <li>
           <g:link action='create' class='jq-button jq-active-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>

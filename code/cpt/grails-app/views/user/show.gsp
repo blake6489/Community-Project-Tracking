@@ -23,7 +23,7 @@
         </li>
         <li>
           <g:link action='create' class='jq-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>

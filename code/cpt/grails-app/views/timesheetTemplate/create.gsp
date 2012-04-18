@@ -17,13 +17,13 @@
           </g:link>
         </li>
         <li>
-          <g:link action='list' class='jq-button jq-active-button' controller='timesheetTemplate'>
+          <g:link action='list' class='jq-button' controller='timesheetTemplate'>
             <g:message code='timesheetTemplate.labels' />
           </g:link>
         </li>
         <li>
           <g:link action='create' class='jq-button jq-active-button'>
-            <g:message args="['']" code='default.new.label' />
+            <g:message args='[entityName]' code='default.new.label' />
           </g:link>
         </li>
       </ul>
