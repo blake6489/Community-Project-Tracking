@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value='location' var='className' />
+    <g:set value='timesheetTemplate' var='className' />
     <g:set value="${message(code: className+'.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.list.label' />
@@ -12,18 +12,13 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button' controller='activity'>
-            <g:message code='activity.labels' />
+          <g:link action='list' class='jq-button' controller='project'>
+            <g:message code='project.labels' />
           </g:link>
         </li>
         <li>
-          <g:link action='list' class='jq-button jq-active-button' controller='location'>
-            <g:message code='location.labels' />
-          </g:link>
-        </li>
-        <li>
-          <g:link action='list' class='jq-button' controller='tool'>
-            <g:message code='tool.labels' />
+          <g:link action='list' class='jq-button jq-active-button' controller='timesheetTemplate'>
+            <g:message code='timesheetTemplate.labels' />
           </g:link>
         </li>
         <li>
@@ -38,6 +33,7 @@
         <thead>
           <tr>
             <g:sortableColumn property='name' title="${message(code: className+'.name.label', default: 'Name')}" />
+            <g:sortableColumn property='project.name' title="${message(code: 'project.label')}" />
           </tr>
         </thead>
         <tbody>
@@ -45,6 +41,9 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
               <td>
                 <g:link action='show' id='${instance.id}'>${fieldValue(bean: instance, field: "name")}</g:link>
+              </td>
+              <td>
+                <g:link action='show' controller='project' id='${instance.project.id}'>${fieldValue(bean: instance, field: "project.name")}</g:link>
               </td>
             </tr>
           </g:each>

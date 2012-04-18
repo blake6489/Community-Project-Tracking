@@ -13,8 +13,7 @@ class ToolController {
 	}
 
 	def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[toolInstanceList: Tool.list(params), toolInstanceTotal: Tool.count()]
+		[list: Tool.list(params), total: Tool.count()]
 	}
 
 	def create() {

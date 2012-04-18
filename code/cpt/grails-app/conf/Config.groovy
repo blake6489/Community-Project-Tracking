@@ -105,3 +105,7 @@ grails.plugins.springsecurity.successHandler.alwaysUseDefault = true //disabling
 grails.plugins.springsecurity.roleHierarchy = '''
 	ROLE_ADMIN > ROLE_USER
 '''
+
+cpt.paginate.max.default = 10
+cpt.paginate.max.max = 100
+cpt.paginate.maxsteps.default = 5

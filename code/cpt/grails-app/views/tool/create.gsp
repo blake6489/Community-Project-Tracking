@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'tool.label')}" var='entityName' />
+    <g:set value='tool' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.create.label' />
     </title>
@@ -11,13 +12,23 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button'>
-            <g:message args='[entityName]' code='default.list.label' />
+          <g:link action='list' class='jq-button' controller='activity'>
+            <g:message code='activity.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button' controller='location'>
+            <g:message code='location.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button jq-active-button' controller='tool'>
+            <g:message code='tool.labels' />
           </g:link>
         </li>
         <li>
           <g:link action='create' class='jq-button jq-active-button'>
-            <g:message args='[entityName]' code='default.new.label' />
+            <g:message args="['']" code='default.new.label' />
           </g:link>
         </li>
       </ul>

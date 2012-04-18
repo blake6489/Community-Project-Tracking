@@ -3,6 +3,7 @@ import cpt.User
 import cpt.UserRole
 
 import cpt.Location
+import cpt.Activity
 
 class BootStrap {
 
@@ -21,6 +22,17 @@ class BootStrap {
 		new Location(name: 'Cushman to Wickersham & Bridge').save()
 		new Location(name: 'Griffen to Wendell & Bridge').save()
 		new Location(name: 'North Cushman').save()
+		
+		new Activity(name: 'Trash').save()
+		new Activity(name: 'Snow Removal').save()
+		new Activity(name: 'Ice Chipping').save()
+		new Activity(name: 'Unsanitary Deposits').save()
+		new Activity(name: 'Inebriate Activity').save()
+		new Activity(name: 'Garage Maintenance').save()
+		new Activity(name: 'Special Projects').save()
+		new Activity(name: 'Sweeping').save()
+		new Activity(name: 'Blowing').save()
+		new Activity(name: 'Washing').save()
 	}
 
 	def destroy = {

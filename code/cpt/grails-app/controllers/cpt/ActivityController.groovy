@@ -13,8 +13,7 @@ class ActivityController {
 	}
 
 	def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[activityInstanceList: Activity.list(params), activityInstanceTotal: Activity.count()]
+		[list: Activity.list(params), total: Activity.count()]
 	}
 
 	def create() {

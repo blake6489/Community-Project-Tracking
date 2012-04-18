@@ -1,7 +1,7 @@
 !!! 5
 %html
 	%head
-		%g:set(var="className" value="activity")/
+		%g:set(var="className" value="timesheetTemplate")/
 		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code='default.list.label' args='[entityName]')/
@@ -9,14 +9,11 @@
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button.jq-active-button(controller='activity' action='list')
-						%g:message(code="activity.labels")/
+					%g:link.jq-button(controller='project' action='list')
+						%g:message(code="project.labels")/
 				%li
-					%g:link.jq-button(controller='location' action='list')
-						%g:message(code="location.labels")/
-				%li
-					%g:link.jq-button(controller='tool' action='list')
-						%g:message(code="tool.labels")/
+					%g:link.jq-button.jq-active-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button(action='create')
 						%g:message(code="default.new.label" args="['']")/
@@ -25,10 +22,13 @@
 				%thead
 					%tr
 						%g:sortableColumn(property="name" title="${message(code: className+'.name.label', default: 'Name')}")/
+						%g:sortableColumn(property="project.name" title="${message(code: 'project.label')}")/
 				%tbody
 					%g:each(in="${list}" status="i" var="instance")
 						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
 							%td
 								%g:link(action="show" id="${instance.id}") ${fieldValue(bean: instance, field: "name")}
+							%td
+								%g:link(controller="project" action="show" id="${instance.project.id}") ${fieldValue(bean: instance, field: "project.name")}
 			%div(class="pagination")
 				%g:paginate(total="${total}" maxsteps="${params.maxsteps}")/

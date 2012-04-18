@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'user.label', default: 'User')}" var='entityName' />
+    <g:set value='user' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.create.label' />
     </title>
@@ -11,13 +12,18 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button'>
-            <g:message args='[entityName]' code='default.list.label' />
+          <g:link action='list' class='jq-button' controller='worker'>
+            <g:message code='worker.labels' />
           </g:link>
         </li>
         <li>
-          <g:link class='jq-button jq-active-button' mapping='user_create'>
-            <g:message args='[entityName]' code='default.new.label' />
+          <g:link action='list' class='jq-button jq-active-button' controller='user'>
+            <g:message code='user.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button jq-active-button'>
+            <g:message args="['']" code='default.new.label' />
           </g:link>
         </li>
       </ul>
@@ -27,7 +33,7 @@
         <g:message args='[entityName]' code='default.create.label' />
       </h1>
       <cpt:errors bean='${instance}'></cpt:errors>
-      <g:form action='save' class='ui-widget ui-widget-content ui-corner-all'>
+      <g:form action='create' class='ui-widget ui-widget-content ui-corner-all'>
         <fieldset class='table'>
           <div class="${hasErrors(bean: instance, field: 'username', 'error')} row required">
             <div class='cell'>

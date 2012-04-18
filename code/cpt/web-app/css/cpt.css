@@ -5,6 +5,52 @@ body {
 	font-size: 12pt;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	margin: 0;
+}
+
+h1 {
+	font-size: 2em;
+	margin-bottom: .5em;
+	padding: .125em;
+	padding-left: .25em;
+}
+h2 {
+	font-size: 1.8em;
+	margin-bottom: .556em;
+	padding: .139em;
+	padding-left: .278em;
+}
+
+h3  {
+	font-size: 1.65em;
+	margin-bottom: 0.606em;
+	padding: 0.152em;
+	padding-left: 0.303em;
+}
+
+h4 {
+	font-size: 1.5em;
+	margin-bottom: 0.667em;
+	padding: 0.167em;
+	padding-left: 0.333em;
+}
+
+h5 {
+	font-size: 1.35em;
+	margin-bottom: 0.741em;
+	padding: 0.185em;
+	padding-left: 0.37em;
+}
+
+h6 {
+	font-size: 1.2em;
+	margin-bottom: 0.833em;
+	padding: 0.208em;
+	padding-left: 0.417em;
+}
+
 ul {
 	margin: 0;
 /*	padding: 0;
@@ -75,8 +121,8 @@ fieldset .cell textArea {width: 20em;height:5em;}
 
 .main {padding:1em;}
 
-.ui-widget-header {
-	font-weight: normal;
+.ui-widget-content {
+	margin-bottom:1em;
 }
 
 *.ui-helper-hidden {display:none;}
@@ -88,18 +134,6 @@ fieldset .cell textArea {width: 20em;height:5em;}
 
 .ui-state-highlight {
 	padding: .5em;
-}
-
-.jq-active-button {
-	cursor: default;
-}
-
-h1 {
-	font-size: 2em;
-	margin: 0;
-	margin-bottom: .5em;
-	padding: .125em;
-	padding-left: .25em;
 }
 
 table.list {
@@ -131,6 +165,7 @@ table.list tr.odd {
 	padding: .25em .5em;
 	text-decoration: none;
 	color: black;
+	margin:0 .25em;
 }
 
 .pagination .currentStep {
@@ -151,3 +186,15 @@ table.list tr.odd {
 .error input, .error select, .error textarea{
 	border-color: red;
 }
+
+.timesheet {display:inline-block;}
+.timesheet .name {text-align:center}
+.timesheet table{
+	border-collapse: collapse;
+}
+.timesheet th, .timesheet td {
+	border: 1px solid black;
+}
+.timesheet th:first-child {border-width: 0 2px 2px 0;}
+.timesheet .location {width:10em;border-bottom-width:2px;}
+.timesheet .activity {padding:.25em;border-right-width:2px;}

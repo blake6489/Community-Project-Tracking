@@ -1,7 +1,7 @@
 !!! 5
 %html
 	%head
-		%g:set(var="className" value="tool")/
+		%g:set(var="className" value="project")/
 		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
@@ -9,14 +9,11 @@
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button(controller='activity' action='list')
-						%g:message(code="activity.labels")/
+					%g:link.jq-button.jq-active-button(controller='project' action='list')
+						%g:message(code="project.labels")/
 				%li
-					%g:link.jq-button(controller='location' action='list')
-						%g:message(code="location.labels")/
-				%li
-					%g:link.jq-button.jq-active-button(controller='tool' action='list')
-						%g:message(code="tool.labels")/
+					%g:link.jq-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button.jq-active-button(action='create')
 						%g:message(code="default.new.label" args="['']")/
@@ -26,14 +23,12 @@
 			%cpt:errors(bean="${instance}")
 			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="create")
 				%fieldset.table
-					.row.required(class="${hasErrors(bean: instance, 'error')}")
+					.row.required(class="${hasErrors(bean: instance, field: 'name', 'error')}")
 						.cell
-							%label(for="names")
-								Names
-								%br/
-								(one per line)
+							%label(for="name")
+								${message(code: className+'.name.label', default: 'Name')}
 						.cell
 							.required-indicator *
 						.cell
-							%g:textArea(name="names" required="" value="${names}")/
+							%g:textField(name="name" required="" value="${instance.name}")/
 				%cpt:fieldsetCreate/

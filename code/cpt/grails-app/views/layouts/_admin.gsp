@@ -7,23 +7,23 @@
       </g:link>
     </li>
     <li>
+      <g:link url='#'>
+        Reports
+      </g:link>
+    </li>
+    <li>
+      <g:link action='list' controller='project'>
+        Projects
+      </g:link>
+    </li>
+    <li>
       <g:link action='list' controller='activity'>
-        Activities
-      </g:link>
-    </li>
-    <li>
-      <g:link action='list' controller='location'>
-        Locations
-      </g:link>
-    </li>
-    <li>
-      <g:link action='list' controller='tool'>
-        Tools
+        Data
       </g:link>
     </li>
     <li>
       <g:link action='list' controller='user'>
-        Users
+        People
       </g:link>
     </li>
     <li style='float:right'>

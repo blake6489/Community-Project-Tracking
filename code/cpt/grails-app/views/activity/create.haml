@@ -1,18 +1,25 @@
 !!! 5
 %html
 	%head
-		%g:set(var="entityName" value="${message(code: 'activity.label')}")/
+		%g:set(var="className" value="activity")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code="default.create.label" args="[entityName]")/
 	%body
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button(action='list')
-						%g:message(code="default.list.label" args="[entityName]")/
+					%g:link.jq-button.jq-active-button(controller='activity' action='list')
+						%g:message(code="activity.labels")/
+				%li
+					%g:link.jq-button(controller='location' action='list')
+						%g:message(code="location.labels")/
+				%li
+					%g:link.jq-button(controller='tool' action='list')
+						%g:message(code="tool.labels")/
 				%li
 					%g:link.jq-button.jq-active-button(action='create')
-						%g:message(code="default.new.label" args="[entityName]")/
+						%g:message(code="default.new.label" args="['']")/
 		.main
 			%h1.ui-widget-header.ui-corner-all
 				%g:message(code="default.create.label" args="[entityName]")/

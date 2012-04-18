@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'location.label')}" var='entityName' />
+    <g:set value='location' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.show.label' />
     </title>
@@ -11,20 +12,30 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button'>
-            <g:message args='[entityName]' code='default.list.label' />
+          <g:link action='list' class='jq-button' controller='activity'>
+            <g:message code='activity.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button jq-active-button' controller='location'>
+            <g:message code='location.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button' controller='tool'>
+            <g:message code='tool.labels' />
           </g:link>
         </li>
         <li>
           <g:link action='create' class='jq-button'>
-            <g:message args='[entityName]' code='default.new.label' />
+            <g:message args="['']" code='default.new.label' />
           </g:link>
         </li>
       </ul>
     </div>
     <div class='main'>
       <h1 class='ui-widget-header ui-corner-all'>
-        <g:message args='[entityName]' code='default.show.label' />
+        ${entityName}: ${instanceR.name}
       </h1>
       <cpt:errors bean='${instanceW}'></cpt:errors>
       <g:form action='show' class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instanceW?.id}'>
@@ -34,7 +45,7 @@
           <div class="${hasErrors(bean: instanceW, field: 'name', 'error')} row required">
             <div class='cell'>
               <label for='name'>
-                <g:message code='location.name.label' default='Name' />
+                <g:message code='${className}.name.label' default='Name' />
               </label>
             </div>
             <div class='cell w'>

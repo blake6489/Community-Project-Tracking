@@ -1,7 +1,7 @@
 !!! 5
 %html
 	%head
-		%g:set(var="className" value="activity")/
+		%g:set(var="className" value="project")/
 		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code='default.list.label' args='[entityName]')/
@@ -9,14 +9,11 @@
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button.jq-active-button(controller='activity' action='list')
-						%g:message(code="activity.labels")/
+					%g:link.jq-button.jq-active-button(controller='project' action='list')
+						%g:message(code="project.labels")/
 				%li
-					%g:link.jq-button(controller='location' action='list')
-						%g:message(code="location.labels")/
-				%li
-					%g:link.jq-button(controller='tool' action='list')
-						%g:message(code="tool.labels")/
+					%g:link.jq-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button(action='create')
 						%g:message(code="default.new.label" args="['']")/

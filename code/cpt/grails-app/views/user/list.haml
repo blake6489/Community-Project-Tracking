@@ -1,21 +1,23 @@
 !!! 5
 %html
 	%head
-		%g:set(var="entityName" value="${message(code: 'user.label', default: 'User')}")/
+		%g:set(var="className" value="user")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code='default.list.label' args='[entityName]')/
 	%body
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button.jq-active-button(action='list')
-						%g:message(code="default.list.label" args="[entityName]")/
+					%g:link.jq-button(controller='worker' action='list')
+						%g:message(code="worker.labels")/
 				%li
-					%g:link.jq-button(mapping='user_create')
-						%g:message(code="default.new.label" args="[entityName]")/
+					%g:link.jq-button.jq-active-button(controller='user' action='list')
+						%g:message(code="user.labels")/
+				%li
+					%g:link.jq-button(action='create')
+						%g:message(code="default.new.label" args="['']")/
 		.main
-			%h1.ui-widget-header.ui-corner-all
-				%g:message(code="default.list.label" args="[entityName]")/
 			%table.list.ui-widget.ui-widget-content.ui-corner-all
 				%thead
 					%tr

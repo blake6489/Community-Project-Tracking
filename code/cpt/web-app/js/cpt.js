@@ -20,7 +20,7 @@ function createHeader() {
 $(function(){
 	createHeader()
 	$('.jq-button').button()
-	$('.jq-active-button').button('disable').addClass('ui-state-active').removeClass('ui-state-disabled')
+	$('.jq-active-button').button().unbind().addClass('ui-state-active')
 	$('.read .w').addClass('ui-helper-hidden')
 	$('.write .r').addClass('ui-helper-hidden')
 	$('.rwbutton').click(function(event) {

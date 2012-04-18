@@ -15,8 +15,7 @@ class LocationController {
 	}
 
 	def list() {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[locationInstanceList: Location.list(params), locationInstanceTotal: Location.count()]
+		[list: Location.list(params), total: Location.count()]
 	}
 
 	def create() {

@@ -1,7 +1,7 @@
 !!! 5
 %html
 	%head
-		%g:set(var="className" value="tool")/
+		%g:set(var="className" value="project")/
 		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code='default.show.label' args='[entityName]')/
@@ -9,20 +9,17 @@
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button(controller='activity' action='list')
-						%g:message(code="activity.labels")/
+					%g:link.jq-button.jq-active-button(controller='project' action='list')
+						%g:message(code="project.labels")/
 				%li
-					%g:link.jq-button(controller='location' action='list')
-						%g:message(code="location.labels")/
-				%li
-					%g:link.jq-button.jq-active-button(controller='tool' action='list')
-						%g:message(code="tool.labels")/
+					%g:link.jq-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
 				%li
 					%g:link.jq-button(action='create')
 						%g:message(code="default.new.label" args="['']")/
 		.main
 			%h1.ui-widget-header.ui-corner-all
-				${entityName}: ${fieldValue(bean: instanceR, field: "name")}
+				${entityName}: ${fieldValue(bean: instance, field: "name")}
 			%cpt:errors(bean="${instanceW}")
 			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="show" id="${instanceW?.id}" class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'}")
 				%g:hiddenField(name="id" value="${instanceW?.id}")/
@@ -31,7 +28,7 @@
 					.row.required(class="${hasErrors(bean: instanceW, field: 'name', 'error')}")
 						.cell
 							%label(for="name")
-								%g:message(code="${className}.name.label" default="Name")/
+								%g:message(code="location.name.label" default="Name")/
 						.cell.w
 							.required-indicator *
 						.cell.r
@@ -43,3 +40,13 @@
 					%cpt:rwButton/
 					%g:submitButton.jq-button.w(name="update" value="${message(code: 'default.button.update.label', default: 'Update')}")/
 					%cpt:deleteButton/
+			.ui-widget.ui-widget-content.ui-corner-all
+				%h3 Timesheets
+				%g:if(test="${instanceW.templates.count}")
+					%ul
+						%g:each(in="${instanceW.templates}" status="i" var="template")
+							%li
+								%g:link(controller="timesheetTemplate" action="show" id="${template.id}") ${fieldValue(bean: template, field: "name")}
+				.buttons
+					%g:link.jq-button(controller='timesheetTemplate' action='create' id='${instanceW.id}')
+						%g:message(code="default.create.label" args="[message(code:'timesheetTemplate.label')]")/

@@ -15,7 +15,12 @@ class UserController {
 	}
 	
 	def create() {
-		[instance: flash.chainModel?.instance?: new User(params)]
+		if(request.get) {
+			return [instance: new User()]
+		}
+		else if(request.post) {
+			return save()
+		}
 	}
 	
 	def save() {
@@ -28,18 +33,15 @@ class UserController {
 		if (!params.password.equals(params.password2)) {
 			instance.validate() //might as well report other errors too
 			instance.errors.rejectValue('password', message(code:'default.password.mismatch.message'))
-			render(view: "create", model: [instance: instance])
-			return
+			return [instance: instance]
 		}
 		
 		if (!instance.createWithUserRole()) {
 			//chain(action: "create", model: [instance: instance])
-			render(view: "create", model: [instance: instance])
-			return
+			return [instance: instance]
 		}
 
-		//flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), instance.id])
-		flash.message = "User ${instance.username} created"
+		flash.message = message(code: 'default.created.message', args: [message(code: 'user.label'), instance.username])
 		redirect(action: "show", id: instance.id)
 	}
 	

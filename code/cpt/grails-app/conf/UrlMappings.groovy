@@ -6,26 +6,35 @@ class UrlMappings {
 		"/login/$action"(controller: "login") {constraints {action(notEqual:"login")}}
 		"/logout"(controller: "logout", action: "index")
 		
-		"/activities"(controller: "activity", action: "list")
-		"/activities/$id/$title?"(controller: "activity", action: "show"){constraints {id(matches: /\d+/)}}
-		"/activities/create"(controller: "activity", action: "create")
-		"/activities/delete/$id"(controller: "activity", action: "delete")
+		"/data/activities"(controller: "activity", action: "list")
+		"/data/activities/$id/$title?"(controller: "activity", action: "show"){constraints {id(matches: /\d+/)}}
+		"/data/activities/create"(controller: "activity", action: "create")
+		"/data/activities/delete/$id"(controller: "activity", action: "delete")
 		
-		"/locations"(controller: "location", action: "list")
-		"/locations/$id/$title?"(controller: "location", action: "show"){constraints {id(matches: /\d+/)}}
-		"/locations/create"(controller: "location", action: "create")
-		"/locations/delete/$id"(controller: "location", action: "delete")
+		"/data/locations"(controller: "location", action: "list")
+		"/data/locations/$id/$title?"(controller: "location", action: "show"){constraints {id(matches: /\d+/)}}
+		"/data/locations/create"(controller: "location", action: "create")
+		"/data/locations/delete/$id"(controller: "location", action: "delete")
 		
-		"/tools"(controller: "tool", action: "list")
-		"/tools/$id/$title?"(controller: "tool", action: "show"){constraints {id(matches: /\d+/)}}
-		"/tools/create"(controller: "tool", action: "create")
-		"/tools/delete/$id"(controller: "tool", action: "delete")
+		"/data/tools"(controller: "tool", action: "list")
+		"/data/tools/$id/$title?"(controller: "tool", action: "show"){constraints {id(matches: /\d+/)}}
+		"/data/tools/create"(controller: "tool", action: "create")
+		"/data/tools/delete/$id"(controller: "tool", action: "delete")
 		
-		"/users"(controller: "user", action: "list")
-		name user_create: "/users/create"(controller:"user"){action = [GET:"create", POST:"save"]}
-		"/users/$id/$title?"(controller: "user", action: "show"){constraints {id(matches: /\d+/)}}
-		name user_resetPassword: "/users/reset/$id?"(controller: "user", action: "resetPassword")
-		//"/users/$action/$id?"(controller: "user"){constraints {action(validator: {!(it in ["list", "show"])})}}
+		"/people/accounts"(controller: "user", action: "list")
+		"/people/accounts/$id/$title?"(controller: "user", action: "show"){constraints {id(matches: /\d+/)}}
+		"/people/accounts/create"(controller:"user", action: "create")
+		"/people/accounts/reset/$id?"(controller: "user", action: "resetPassword")
+		
+		"/projects"(controller: "project", action: "list")
+		"/projects/$id/$title?"(controller: "project", action: "show"){constraints {id(matches: /\d+/)}}
+		"/projects/create"(controller: "project", action: "create")
+		"/projects/delete/$id"(controller: "project", action: "delete")
+		
+		"/projects/timesheets"(controller: "timesheetTemplate", action: "list")
+		"/projects/timesheets/$id/$title?"(controller: "timesheetTemplate", action: "show"){constraints {id(matches: /\d+/)}}
+		"/projects/timesheets/create/$id?"(controller: "timesheetTemplate", action: "create")
+		"/projects/timesheets/delete/$id"(controller: "timesheetTemplate", action: "delete")
 		
 		//remove these before production
 		"/grails/"(controller: "home", action: "grails")

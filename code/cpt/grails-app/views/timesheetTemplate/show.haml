@@ -1,0 +1,37 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="timesheetTemplate")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code='default.show.label' args='[entityName]')/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(controller='project' action='list')
+						%g:message(code="project.labels")/
+				%li
+					%g:link.jq-button.jq-active-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
+				%li
+					%g:link.jq-button(action='create')
+						%g:message(code="default.new.label" args="['']")/
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				${entityName}: ${fieldValue(bean: instance, field: "name")}
+			.timesheet.ui-widget
+				%table
+					%thead
+						%tr
+							%th
+							%g:each(in="${instance.locations}" status="i" var="location")
+								%th.location
+									${fieldValue(bean: location, field: "name")}
+					%tbody
+						%g:each(in="${instance.activities}" status="i" var="activity")
+							%tr
+								%td.activity
+									${fieldValue(bean: activity, field: "name")}
+								%g:each(in="${instance.locations}")
+									%td

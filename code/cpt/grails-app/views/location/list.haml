@@ -1,30 +1,34 @@
 !!! 5
 %html
 	%head
-		%g:set(var="entityName" value="${message(code: 'location.label', default: 'Location')}")/
+		%g:set(var="className" value="location")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
 		%title
 			%g:message(code='default.list.label' args='[entityName]')/
 	%body
 		.subnav
 			%ul
 				%li
-					%g:link.jq-button.jq-active-button(action='list')
-						%g:message(code="default.list.label" args="[entityName]")/
+					%g:link.jq-button(controller='activity' action='list')
+						%g:message(code="activity.labels")/
+				%li
+					%g:link.jq-button.jq-active-button(controller='location' action='list')
+						%g:message(code="location.labels")/
+				%li
+					%g:link.jq-button(controller='tool' action='list')
+						%g:message(code="tool.labels")/
 				%li
 					%g:link.jq-button(action='create')
-						%g:message(code="default.new.label" args="[entityName]")/
+						%g:message(code="default.new.label" args="['']")/
 		.main
-			.content.scaffold-list(role="main")
-				%h1.ui-widget-header.ui-corner-all
-					%g:message(code="default.list.label" args="[entityName]")/
-				%table.list.ui-widget.ui-widget-content.ui-corner-all
-					%thead
-						%tr
-							%g:sortableColumn(property="name" title="${message(code: 'location.name.label', default: 'Name')}")/
-					%tbody
-						%g:each(in="${locationInstanceList}" status="i" var="locationInstance")
-							%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
-								%td
-									%g:link(action="show" id="${locationInstance.id}") ${fieldValue(bean: locationInstance, field: "name")}
-				%div(class="pagination")
-					%g:paginate(total="${locationInstanceTotal}")/
+			%table.list.ui-widget.ui-widget-content.ui-corner-all
+				%thead
+					%tr
+						%g:sortableColumn(property="name" title="${message(code: className+'.name.label', default: 'Name')}")/
+				%tbody
+					%g:each(in="${list}" status="i" var="instance")
+						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
+							%td
+								%g:link(action="show" id="${instance.id}") ${fieldValue(bean: instance, field: "name")}
+			%div(class="pagination")
+				%g:paginate(total="${total}" maxsteps="${params.maxsteps}")/

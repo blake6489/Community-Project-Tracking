@@ -1,0 +1,62 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="timesheetTemplate")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code="default.create.label" args="[entityName]")/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(controller='project' action='list')
+						%g:message(code="project.labels")/
+				%li
+					%g:link.jq-button.jq-active-button(controller='timesheetTemplate' action='list')
+						%g:message(code="timesheetTemplate.labels")/
+				%li
+					%g:link.jq-button.jq-active-button(action='create')
+						%g:message(code="default.new.label" args="['']")/
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				%g:message(code="default.create.label" args="[entityName]")/
+			%cpt:errors(bean="${instance}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="create")
+				%fieldset.table
+					%g:if(test="${params.id}")
+						%g:hiddenField(name="project.id" value="${params.id}")/
+					%g:else
+						.row.required(class="${hasErrors(bean: instance, field: 'project', 'error')}")
+							.cell
+								%label(for="project.id")
+									${message(code: 'project.label')}
+							.cell
+								.required-indicator *
+							.cell
+								%g:select(name="project.id" from="${cpt.Project.list()}" optionKey="id" optionValue="name" value="${instance?.project?.id}")/
+					.row.required(class="${hasErrors(bean: instance, field: 'name', 'error')}")
+						.cell
+							%label(for="name")
+								${message(code: className+'.name.label', default: 'Name')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:textField(name="name" required="" value="${instance.name}")/
+					.row.required(class="${hasErrors(bean: instance, field: 'activities', 'error')}")
+						.cell
+							%label(for="activities")
+								${message(code: 'activity.labels')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="activities" from="${cpt.Activity.list()}" optionKey="id" optionValue="name" size="5" value="${instance?.activities*.id}" multiple="multiple")/
+					.row.required(class="${hasErrors(bean: instance, field: 'locations', 'error')}")
+						.cell
+							%label(for="locations")
+								${message(code: 'location.labels')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="locations" from="${cpt.Location.list()}" optionKey="id" optionValue="name" size="5" value="${instance?.locations*.id}" multiple="multiple")/
+							
+				%cpt:fieldsetCreate/

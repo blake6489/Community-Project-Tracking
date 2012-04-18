@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <g:set value="${message(code: 'user.label', default: 'User')}" var='entityName' />
+    <g:set value='user' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
     <title>
       <g:message args='[entityName]' code='default.list.label' />
     </title>
@@ -11,21 +12,23 @@
     <div class='subnav'>
       <ul>
         <li>
-          <g:link action='list' class='jq-button jq-active-button'>
-            <g:message args='[entityName]' code='default.list.label' />
+          <g:link action='list' class='jq-button' controller='worker'>
+            <g:message code='worker.labels' />
           </g:link>
         </li>
         <li>
-          <g:link class='jq-button' mapping='user_create'>
-            <g:message args='[entityName]' code='default.new.label' />
+          <g:link action='list' class='jq-button jq-active-button' controller='user'>
+            <g:message code='user.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button'>
+            <g:message args="['']" code='default.new.label' />
           </g:link>
         </li>
       </ul>
     </div>
     <div class='main'>
-      <h1 class='ui-widget-header ui-corner-all'>
-        <g:message args='[entityName]' code='default.list.label' />
-      </h1>
       <table class='list ui-widget ui-widget-content ui-corner-all'>
         <thead>
           <tr>

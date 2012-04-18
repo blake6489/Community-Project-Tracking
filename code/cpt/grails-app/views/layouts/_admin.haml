@@ -4,17 +4,17 @@
 			%g:link(controller='home' action='home')
 				Home
 		%li
+			%g:link(url="#")
+				Reports
+		%li
+			%g:link(controller='project' action='list')
+				Projects
+		%li
 			%g:link(controller='activity' action='list')
-				Activities
-		%li
-			%g:link(controller='location' action='list')
-				Locations
-		%li
-			%g:link(controller='tool' action='list')
-				Tools
+				Data
 		%li
 			%g:link(controller='user' action='list')
-				Users
+				People
 		%li(style="float:right")
 			%g:link(controller='logout')
 				Logout
