@@ -135,7 +135,10 @@ The {\tt 1998 - IEEE Standard for Information Technology -- Systems Design -- So
 \section{Design Considerations}
 
 \subsection{Programming Languages}
+The project will be completed using Groovy on Grails to produce a java web application. 
 
+\subsection{Database}
+The H2 database manager is the default database manager used by Grails and according to information from \href{http://database-management-systems.findthebest.com/compare/16-30/H2-vs-MySQL}{third parties} is sufficient to handle the task necessary.
 
 \subsection{Project Management}
 This project will use \e{Git} version control in conjunction with \e{GitHub} to keep track of changes. The repository can be reached at \url{https://github.com/blake6489/Community-Project-Tracking}.
@@ -192,15 +195,13 @@ This project will use \e{Git} version control in conjunction with \e{GitHub} to 
 ** update\\
 **delete\\
 
-Views\\
-
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Views}
 \subsection{Layouts}
 Layouts are application-wide views not tied to any specific controller. Layouts will be in the "views/layouts" folder.
 \subsubsection{application}
-This is the application-wide layout. It's reponsible for deciding what layout templates to render based on user access levels.
+This is the application-wide layout. It's responsible for deciding what layout templates to render based on user access levels.
 It must also render flash messages to alleviate other views from having to do so.
 \subsubsection{\_login}
 This template renders when the user hasn't logged in. It'll contain an ajax form allowing the user to login.
