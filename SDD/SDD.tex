@@ -13,6 +13,8 @@
 \usepackage{hyperref} % links
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{ulem}%strikethrough
+
 \usepackage{lscape}
 %\usepackage{titlesec}
 \usepackage{rotating} % text in tables
@@ -145,41 +147,40 @@ This project will use \e{Git} version control in conjunction with \e{GitHub} to 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Domains}\label{sec:Domains}
-\subsection{User}
+\subsection{User}\label{sec:DUser}
 There will be two types of user accounts: admin and employee. Both types of accounts will have unique usernames and passwords. Employee accounts will have the following permissions: fill in and submit the current time sheet, and view past timesheets submitted by that specific account. Admin accounts will have the following permissions: create/delete admin or employee accounts, view usernames and passwords of all accounts, view and edit all submitted timesheets, create and submit timesheets on behalf of volunteer group, and access to automated report generation.
-\subsection{Role}
-\subsection{Project}
+\subsection{Role}\label{sec:Role}
+\subsection{Project}\label{sec:DProject}
 
 \setcounter{paragraph}{0}
-\subsection{Activity}
+\subsection{Activity}\label{sec:DActivity}
 \paragraph{constraints}
 \paragraph{name} 250 characters, alphanumeric and spaces 
 \paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
 \paragraph{setName}
 
 \setcounter{paragraph}{0}
-
-\subsection{Location}
+\subsection{Location}\label{sec:DLocation}
 \paragraph{constraints}
 \paragraph{name} 250 characters, alphanumeric and spaces 
 \paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
 \paragraph{setName}
 
 \setcounter{paragraph}{0}
-\subsection{Project}
+\subsection{Project}\label{sec:DLocation}
 \paragraph{constraints}
 \paragraph{name} 250 characters, alphanumeric and spaces 
 \paragraph{hasMany}
 
 \setcounter{paragraph}{0}
-\subsection{Role}
+\subsection{Role}\label{sec:DLocation}
 \paragraph{constraints}
 \paragraph{mapping}
 \paragraph{authority}
 \paragraph{type}
 
 \setcounter{paragraph}{0}
-\subsection{Timesheet}
+\subsection{Timesheet}\label{sec:DLocation}
 \paragraph{constraints}
 \paragraph{hasMany}
 \paragraph{date}
@@ -188,24 +189,24 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{worker}
 
 \setcounter{paragraph}{0}
-\subsection{Tool}
+\subsection{Tool}\label{sec:DTool}
 \paragraph{constraints}
 \paragraph{name} 250 characters, alphanumeric and spaces 
 \paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
 \paragraph{setName}
 
 \setcounter{paragraph}{0}
-\subsection{User}
-\subsection{Worker}
+\subsection{User}\label{sec:DUser}
+\subsection{Worker}\label{sec:DWorker}
 \paragraph{constraints}
 \paragraph{name}
 
 \setcounter{paragraph}{0}
-\subsection{Work Record}
+\subsection{Work Record}\label{sec:DWork Record}
 
 \section{Controllers}\label{sec:Controllers}
 
-\subsubsection{Activity}
+\subsubsection{Activity}\label{sec:CActivity}
 \paragraph{create}
 \paragraph{delete}
 \paragraph{edit}
@@ -215,12 +216,12 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show}
 \paragraph{update}
 
-\subsubsection{Home}
+\subsubsection{Home}\label{sec:CHome}
 \paragraph{grails}
 \paragraph{home}
 \paragraph{index}
 
-\subsubsection{Location}
+\subsubsection{Location}\label{sec:CLocation}
 \paragraph{create}
 \paragraph{delete}
 \paragraph{edit}
@@ -230,7 +231,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show}
 \paragraph{update}
 
-\subsubsection{Login}
+\subsubsection{Login}\label{sec:CLogin}
 \paragraph{ajaxDenied}
 \paragraph{ajaxSuccess}
 \paragraph{authfail}
@@ -239,10 +240,10 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{full}
 \paragraph{login}
 
-\subsubsection{Logout}
+\subsubsection{Logout}\label{sec:CLogout}
 \paragraph{index}
 
-\subsubsection{Project}
+\subsubsection{Project}\label{sec:CProject}
 \paragraph{create}
 \paragraph{delete}
 \paragraph{edit}
@@ -252,7 +253,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show}
 \paragraph{update}
 
-\subsubsection{Tool}
+\subsubsection{Tool}\label{sec:CTool}
 \paragraph{create}
 \paragraph{delete}
 \paragraph{edit}
@@ -262,7 +263,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show}
 \paragraph{update}
 
-\subsubsection{User}
+\subsubsection{User}\label{sec:CUser}
 \paragraph{create}
 \paragraph{delete}
 \paragraph{edit}
@@ -290,7 +291,7 @@ This template renders when an admin is logged in. It'll contain links to parts o
 This template renders when a non-admin is logged in. Not sure what it'll show.
 
 
-\section{Interface}
+\section{Interface}\label{sec:Interface}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=7in]{"CPTSiteDiagram"}
@@ -308,13 +309,32 @@ This template renders when a non-admin is logged in. Not sure what it'll show.
 \begin{tabular}{|l||*{12}{c|}|*{4}{c|}}
 \hline
 \multicolumn{1}{|c||}{ }&
-\multicolumn{12}{|c||}{Functional} &
-\multicolumn{4}{|c|}{Non-functional}\\
+\multicolumn{7}{|c||}{Functional} &
+\multicolumn{2}{|c|}{Non-functional}\\
 \hline
-	& \s{} & \\
+	& \s{3.1.1} & \s{3.1.2}&\s{3.1.3}&\s{3.1.4}&\s{3.1.5}&\s{3.1.6}&\s{\sout{3.1.7}}&\s{3.2.1}&\s{3.2.2} \\
 \hline
 \hline
-~\ref{sec:Update timing}	&	\c \\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
+~\ref{sec:Update}	&&&&&&&&&\\
 \hline
 \end{tabular}
 \end{center}
