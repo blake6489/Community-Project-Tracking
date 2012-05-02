@@ -1,0 +1,34 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="worker")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code="default.create.label" args="[entityName]")/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(controller='worker' action='list')
+						%g:message(code="worker.labels")/
+				%li
+					%g:link.jq-button(controller='user' action='list')
+						%g:message(code="user.labels")/
+				%li
+					%g:link.jq-button.jq-active-button(action='create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				%g:message(code="default.create.label" args="[entityName]")/
+			%cpt:errors(bean="${instance}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="create")
+				%fieldset.table
+					.row.required(class="${hasErrors(bean: instance, field: 'name', 'error')}")
+						.cell
+							%label(for="name")
+								${message(code: className+'.name.label', default: 'Name')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:textField(name="name" required="" value="${instance.name}")/
+				%cpt:fieldsetCreate/

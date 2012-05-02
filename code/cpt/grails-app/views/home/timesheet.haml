@@ -1,0 +1,10 @@
+!!! 5
+%html
+	%head
+		%title CPT Home
+	%body
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				${fieldValue(bean: instance, field: "project.name")} / ${fieldValue(bean: instance, field: "name")}
+			.ui-widget.ui-widget-content.ui-corner-all
+				%cpt:timesheetW(model="${instance}")/

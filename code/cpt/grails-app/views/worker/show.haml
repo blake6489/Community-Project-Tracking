@@ -1,0 +1,42 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="worker")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code='default.show.label' args='[entityName]')/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button.jq-active-button(controller='worker' action='list')
+						%g:message(code="worker.labels")/
+				%li
+					%g:link.jq-button(controller='user' action='list')
+						%g:message(code="user.labels")/
+				%li
+					%g:link.jq-button(action='create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				${entityName}: ${fieldValue(bean: instanceR, field: "name")}
+			%cpt:errors(bean="${instanceW}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="show" id="${instanceW?.id}" class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'}")
+				%g:hiddenField(name="id" value="${instanceW?.id}")/
+				%g:hiddenField(name="version" value="${instanceW?.version}")/
+				%fieldset.table
+					.row.required(class="${hasErrors(bean: instanceW, field: 'name', 'error')}")
+						.cell
+							%label(for="name")
+								%g:message(code="location.name.label" default="Name")/
+						.cell.w
+							.required-indicator *
+						.cell.r
+							%div
+								%g:fieldValue(bean="${instanceR}" field="name")/
+						.cell.w
+							%g:textField(name="name" required="" value="${instanceW?.name}")/
+				.buttons
+					%cpt:rwButton/
+					%g:submitButton.jq-button.w(name="update" value="${message(code: 'default.button.update.label', default: 'Update')}")/
+					%cpt:deleteButton/

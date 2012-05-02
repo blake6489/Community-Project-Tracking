@@ -1,39 +1,56 @@
-<%@ page import="cpt.Worker" %>
-<!doctype html>
+<%-- DO NOT MODIFY THIS FILE, IT IS AUTOMATICALLY GENERATED. INSTEAD MODIFY create.haml --%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'worker.label', default: 'Worker')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#create-worker" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-worker" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${workerInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${workerInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form action="save" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+  <head>
+    <g:set value='worker' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
+    <title>
+      <g:message args='[entityName]' code='default.create.label' />
+    </title>
+  </head>
+  <body>
+    <div class='subnav'>
+      <ul>
+        <li>
+          <g:link action='list' class='jq-button' controller='worker'>
+            <g:message code='worker.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button' controller='user'>
+            <g:message code='user.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button jq-active-button'>
+            <g:message args='[entityName]' code='default.new.label' />
+          </g:link>
+        </li>
+      </ul>
+    </div>
+    <div class='main'>
+      <h1 class='ui-widget-header ui-corner-all'>
+        <g:message args='[entityName]' code='default.create.label' />
+      </h1>
+      <cpt:errors bean='${instance}'></cpt:errors>
+      <g:form action='create' class='ui-widget ui-widget-content ui-corner-all'>
+        <fieldset class='table'>
+          <div class="${hasErrors(bean: instance, field: 'name', 'error')} row required">
+            <div class='cell'>
+              <label for='name'>
+                ${message(code: className+'.name.label', default: 'Name')}
+              </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
+            </div>
+            <div class='cell'>
+              <g:textField name='name' required='' value='${instance.name}' />
+            </div>
+          </div>
+        </fieldset>
+        <cpt:fieldsetCreate />
+      </g:form>
+    </div>
+  </body>
 </html>

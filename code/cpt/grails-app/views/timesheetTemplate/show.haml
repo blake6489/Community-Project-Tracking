@@ -19,19 +19,28 @@
 						%g:message(code="default.new.label" args="[entityName]")/
 		.main
 			%h1.ui-widget-header.ui-corner-all
-				${entityName}: ${fieldValue(bean: instance, field: "name")}
-			.timesheet.ui-widget
-				%table
-					%thead
-						%tr
-							%th
-							%g:each(in="${instance.locations}" status="i" var="location")
-								%th.location
-									${fieldValue(bean: location, field: "name")}
-					%tbody
-						%g:each(in="${instance.activities}" status="i" var="activity")
-							%tr
-								%td.activity
-									${fieldValue(bean: activity, field: "name")}
-								%g:each(in="${instance.locations}")
-									%td
+				${entityName}: ${fieldValue(bean: template, field: "name")}
+			%cpt:errors(bean="${data}")
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(controller="timesheet" action="save")
+				%g:hiddenField(name="template.id" value="${template.id}")/
+				%g:hiddenField(name="project.id" value="${template.project.id}")/
+				%fieldset.table
+					.row.required(class="${hasErrors(bean: instance, field: 'date', 'error')}")
+						.cell
+							%label(for="dateString")
+								Date
+						.cell
+							.required-indicator *
+						.cell
+							%g:textField.jq-date(name="dateString" required="" value="${instance.date}")/
+					.row.required(class="${hasErrors(bean: instance, field: 'worker', 'error')}")
+						.cell
+							%label(for="worker.id")
+								${message(code: 'worker.label')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="worker.id" from="${cpt.Worker.list()}" optionKey="id" optionValue="name" value="${instance?.worker?.id}")/
+				%cpt:timesheetW(template="${template}" data="${data}")
+				.buttons
+					%input.jq-button(type="submit" value="Complete Timesheet")

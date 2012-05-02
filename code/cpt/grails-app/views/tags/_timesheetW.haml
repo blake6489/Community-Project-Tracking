@@ -1,0 +1,19 @@
+.timesheet.ui-widget
+	%table
+		%thead
+			%tr
+				%th
+				%g:each(in="${template.locations}" status="i" var="location")
+					%th.location
+						${fieldValue(bean: location, field: "name")}
+		%tbody
+			%g:each(in="${template.activities}" status="i" var="activity")
+				<%--%g:each(in="${data[activity]?.keySet()}" var="tool")--%>
+				%tr
+					%td.activity
+						${fieldValue(bean: activity, field: "name")}
+					%g:each(in="${template.locations}" var="location")
+						%td
+							<%--%g:set(var="minutes" value="${data[activity][tool][location].minutes/60}${data[activity][tool][location].minutes%60 > 0 ? String.format(":%2", )data[activity][tool][location].minutes%60 : ""}")/--%>
+							%g:set(var="minutes" value="${data?.get(activity.id)?.get(tool?.id ?: 'null')?.get(location.id)?.minutes}")/
+							%g:textField(name="cell.${activity.id}-${location.id}-${tool?.id}" value="${minutes}")/

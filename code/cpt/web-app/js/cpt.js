@@ -20,6 +20,7 @@ function createHeader() {
 $(function(){
 	createHeader()
 	$('.jq-button').button()
+	$('.jq-date').datepicker({changeMonth:true, changeYear:true})
 	$('.jq-active-button').button().unbind().addClass('ui-state-active')
 	$('.read .w').addClass('ui-helper-hidden')
 	$('.write .r').addClass('ui-helper-hidden')

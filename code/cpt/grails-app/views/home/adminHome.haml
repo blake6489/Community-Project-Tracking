@@ -1,0 +1,19 @@
+!!! 5
+%html
+	%head
+		%title CPT Home
+	%body
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				Complete a timesheet
+			.ui-widget.ui-widget-content.ui-corner-all
+				%g:if(test="${!projects.size()}")
+					%h2
+						No projects.
+						%g:link(controller="project" action="create") Create a project.
+				%ul
+					%g:each(in="${projects}" status="i" var="project")
+						%g:each(in="${project.templates}" status="j" var="timesheet")
+							%li
+								%g:link(controller="timesheetTemplate" action="show" id="${timesheet.id}")
+									${fieldValue(bean: project, field: "name")} / ${fieldValue(bean: timesheet, field: "name")}

@@ -1,0 +1,33 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="timesheet")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code='default.show.label' args='[entityName]')/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button(controller='timesheet' action='list')
+						Completed Timesheets
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				${entityName}: ${fieldValue(bean: template, field: "project.name")} - ${fieldValue(bean: template, field: "name")}
+			.ui-widget.ui-widget-content.ui-corner-all
+				%fieldset.table
+					.row
+						.cell
+							%label(for="dateString")
+								Date
+						.cell.r
+							%div
+								%g:formatDate(date="${data.date}")/
+					.row
+						.cell
+							%label(for="worker")
+								Worker
+						.cell.r
+							%div
+								%g:fieldValue(bean="${data}" field="worker.name")/
+				%cpt:timesheetW(template="${template}" data="${data}")

@@ -1,0 +1,31 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="timesheet")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code='default.list.label' args='[entityName]')/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button.jq-active-button(controller='timesheet' action='list')
+						Completed Timesheets
+		.main
+			%table.list.ui-widget.ui-widget-content.ui-corner-all
+				%thead
+					%tr
+						%g:sortableColumn(property="template.name" title="${message(code: 'timesheetTemplate.label')}")/
+						%g:sortableColumn(property="date" title="Date")/
+						%g:sortableColumn(property="worker.name" title="${message(code: 'worker.label')}")/
+				%tbody
+					%g:each(in="${list}" status="i" var="instance")
+						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
+							%td
+								%g:link(action="show" id="${instance.id}") ${fieldValue(bean: instance, field: "template.name")}
+							%td
+								%g:link(action="show" id="${instance.id}") ${formatDate(date: instance.date)}
+							%td
+								%g:link(action="show" id="${instance.id}") ${fieldValue(bean: instance, field: "worker.name")}
+			%div(class="pagination")
+				%g:paginate(total="${total}" maxsteps="${params.maxsteps}")/

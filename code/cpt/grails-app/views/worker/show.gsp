@@ -1,45 +1,67 @@
-
-<%@ page import="cpt.Worker" %>
-<!doctype html>
+<%-- DO NOT MODIFY THIS FILE, IT IS AUTOMATICALLY GENERATED. INSTEAD MODIFY show.haml --%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'worker.label', default: 'Worker')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-worker" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-worker" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list worker">
-			
-				<g:if test="${workerInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="worker.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${workerInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${workerInstance?.id}" />
-					<g:link class="edit" action="edit" id="${workerInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+  <head>
+    <g:set value='worker' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
+    <title>
+      <g:message args='[entityName]' code='default.show.label' />
+    </title>
+  </head>
+  <body>
+    <div class='subnav'>
+      <ul>
+        <li>
+          <g:link action='list' class='jq-button jq-active-button' controller='worker'>
+            <g:message code='worker.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button' controller='user'>
+            <g:message code='user.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button'>
+            <g:message args='[entityName]' code='default.new.label' />
+          </g:link>
+        </li>
+      </ul>
+    </div>
+    <div class='main'>
+      <h1 class='ui-widget-header ui-corner-all'>
+        ${entityName}: ${fieldValue(bean: instanceR, field: "name")}
+      </h1>
+      <cpt:errors bean='${instanceW}'></cpt:errors>
+      <g:form action='show' class="${instanceW?.errors?.hasErrors() ? 'write' : 'read'} ui-widget ui-widget-content ui-corner-all" id='${instanceW?.id}'>
+        <g:hiddenField name='id' value='${instanceW?.id}' />
+        <g:hiddenField name='version' value='${instanceW?.version}' />
+        <fieldset class='table'>
+          <div class="${hasErrors(bean: instanceW, field: 'name', 'error')} row required">
+            <div class='cell'>
+              <label for='name'>
+                <g:message code='location.name.label' default='Name' />
+              </label>
+            </div>
+            <div class='cell w'>
+              <div class='required-indicator'>*</div>
+            </div>
+            <div class='cell r'>
+              <div>
+                <g:fieldValue bean='${instanceR}' field='name' />
+              </div>
+            </div>
+            <div class='cell w'>
+              <g:textField name='name' required='' value='${instanceW?.name}' />
+            </div>
+          </div>
+        </fieldset>
+        <div class='buttons'>
+          <cpt:rwButton />
+          <g:submitButton class='jq-button w' name='update' value="${message(code: 'default.button.update.label', default: 'Update')}" />
+          <cpt:deleteButton />
+        </div>
+      </g:form>
+    </div>
+  </body>
 </html>

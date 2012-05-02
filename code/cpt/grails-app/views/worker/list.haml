@@ -1,0 +1,31 @@
+!!! 5
+%html
+	%head
+		%g:set(var="className" value="worker")/
+		%g:set(var="entityName" value="${message(code: className+'.label')}")/
+		%title
+			%g:message(code='default.list.label' args='[entityName]')/
+	%body
+		.subnav
+			%ul
+				%li
+					%g:link.jq-button.jq-active-button(controller='worker' action='list')
+						%g:message(code="worker.labels")/
+				%li
+					%g:link.jq-button(controller='user' action='list')
+						%g:message(code="user.labels")/
+				%li
+					%g:link.jq-button(action='create')
+						%g:message(code="default.new.label" args="[entityName]")/
+		.main
+			%table.list.ui-widget.ui-widget-content.ui-corner-all
+				%thead
+					%tr
+						%g:sortableColumn(property="name" title="${message(code: 'worker.name.label', default: 'Name')}")/
+				%tbody
+					%g:each(in="${list}" status="i" var="instance")
+						%tr(class="${(i % 2) == 0 ? 'even' : 'odd'}")
+							%td
+								%g:link(action="show" id="${instance.id}" params='[title:"${instance.name}"]') ${fieldValue(bean: instance, field: "name")}
+			%div(class="pagination")
+				%g:paginate(total="${total}")/

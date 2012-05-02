@@ -187,7 +187,7 @@ table.list tr.odd {
 	border-color: red;
 }
 
-.timesheet {display:inline-block;}
+.timesheet {display:inline-block;margin:1em 1em 0 1em;}
 .timesheet .name {text-align:center}
 .timesheet table{
 	border-collapse: collapse;
@@ -198,3 +198,5 @@ table.list tr.odd {
 .timesheet th:first-child {border-width: 0 2px 2px 0;}
 .timesheet .location {width:10em;border-bottom-width:2px;}
 .timesheet .activity {padding:.25em;border-right-width:2px;}
+
+.timesheet td input {text-align:right;}

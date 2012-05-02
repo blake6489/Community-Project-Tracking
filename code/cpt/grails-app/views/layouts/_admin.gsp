@@ -7,13 +7,18 @@
       </g:link>
     </li>
     <li>
-      <g:link url='#'>
+      <g:link action='home' controller='report'>
         Reports
       </g:link>
     </li>
     <li>
       <g:link action='list' controller='project'>
         Projects
+      </g:link>
+    </li>
+    <li>
+      <g:link action='list' controller='timesheet'>
+        Timesheets
       </g:link>
     </li>
     <li>

@@ -1,0 +1,67 @@
+!!! 5
+%html
+	%head
+		%title
+			Reports
+	%body
+		.main
+			%h1.ui-widget-header.ui-corner-all
+				Reports
+			%g:form.ui-widget.ui-widget-content.ui-corner-all(action="home")
+				%fieldset.table
+					.row
+						.cell
+							%label(for="start1") Date Range
+						.cell
+							.required-indicator *
+						.cell
+							%g:textField.jq-date(name="start1" required="")/
+							to
+							%g:textField.jq-date(name="end1" required="")/
+					.row
+						.cell
+							%label(for="project")
+								${message(code: 'project.label')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="project" from="${cpt.Project.list()}" optionKey="id" optionValue="name" noSelection="['':'Any']")/
+					.row.required
+						.cell
+							%label(for="timesheet")
+								${message(code: 'timesheetTemplate.label')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="timesheet" from="${cpt.TimesheetTemplate.list()}" optionKey="id" optionValue="name" noSelection="['':'Any']")/
+					.row.required
+						.cell
+							%label(for="worker")
+								${message(code: 'worker.label')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="worker" from="${cpt.Worker.list()}" optionKey="id" optionValue="name" noSelection="['':'Any']")/
+					.row.required
+						.cell
+							%label(for="activities")
+								${message(code: 'activity.labels')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="activities" from="${cpt.Activity.list()}" optionKey="id" optionValue="name" size="5" value="${cpt.Activity.list()*.id}" multiple="multiple")/
+					.row.required
+						.cell
+							%label(for="locations")
+								${message(code: 'location.labels')}
+						.cell
+							.required-indicator *
+						.cell
+							%g:select(name="locations" from="${cpt.Location.list()}" optionKey="id" optionValue="name" size="5" value="${cpt.Location.list()*.id}" multiple="multiple")/
+							
+				.buttons
+					%input.jq-button(type="submit" value="Generate Report")
+					
+			%g:if(test="${model}")
+				.ui-widget.ui-widget-content.ui-corner-all
+					%cpt:report(activities="${model.activities}" locations="${model.locations}" start="${model.start}" end="${model.end}" workerId="${model.worker}")/

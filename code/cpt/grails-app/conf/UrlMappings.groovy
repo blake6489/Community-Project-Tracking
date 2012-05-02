@@ -26,6 +26,11 @@ class UrlMappings {
 		"/people/accounts/create"(controller:"user", action: "create")
 		"/people/accounts/reset/$id?"(controller: "user", action: "resetPassword")
 		
+		"/people/workers"(controller: "worker", action: "list")
+		"/people/workers/$id/$title?"(controller: "worker", action: "show"){constraints {id(matches: /\d+/)}}
+		"/people/workers/create"(controller:"worker", action: "create")
+		"/data/locations/delete/$id"(controller: "worker", action: "delete")
+		
 		"/projects"(controller: "project", action: "list")
 		"/projects/$id/$title?"(controller: "project", action: "show"){constraints {id(matches: /\d+/)}}
 		"/projects/create"(controller: "project", action: "create")
@@ -35,6 +40,12 @@ class UrlMappings {
 		"/projects/timesheets/$id/$title?"(controller: "timesheetTemplate", action: "show"){constraints {id(matches: /\d+/)}}
 		"/projects/timesheets/create/$id?"(controller: "timesheetTemplate", action: "create")
 		"/projects/timesheets/delete/$id"(controller: "timesheetTemplate", action: "delete")
+		"/projects/timesheets/complete"(controller: "timesheet", action: "save")
+		
+		"/timesheets"(controller: "timesheet", action: "list")
+		"/timesheets/$id"(controller: "timesheet", action: "show"){constraints {id(matches: /\d+/)}}
+		
+		"/reports"(controller: "report", action: "home")
 		
 		//remove these before production
 		"/grails/"(controller: "home", action: "grails")

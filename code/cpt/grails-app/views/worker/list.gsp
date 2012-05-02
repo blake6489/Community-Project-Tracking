@@ -1,46 +1,53 @@
-
-<%@ page import="cpt.Worker" %>
-<!doctype html>
+<%-- DO NOT MODIFY THIS FILE, IT IS AUTOMATICALLY GENERATED. INSTEAD MODIFY list.haml --%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'worker.label', default: 'Worker')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-worker" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-worker" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-				<thead>
-					<tr>
-					
-						<g:sortableColumn property="name" title="${message(code: 'worker.name.label', default: 'Name')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${workerInstanceList}" status="i" var="workerInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${workerInstance.id}">${fieldValue(bean: workerInstance, field: "name")}</g:link></td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${workerInstanceTotal}" />
-			</div>
-		</div>
-	</body>
+  <head>
+    <g:set value='worker' var='className' />
+    <g:set value="${message(code: className+'.label')}" var='entityName' />
+    <title>
+      <g:message args='[entityName]' code='default.list.label' />
+    </title>
+  </head>
+  <body>
+    <div class='subnav'>
+      <ul>
+        <li>
+          <g:link action='list' class='jq-button jq-active-button' controller='worker'>
+            <g:message code='worker.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='list' class='jq-button' controller='user'>
+            <g:message code='user.labels' />
+          </g:link>
+        </li>
+        <li>
+          <g:link action='create' class='jq-button'>
+            <g:message args='[entityName]' code='default.new.label' />
+          </g:link>
+        </li>
+      </ul>
+    </div>
+    <div class='main'>
+      <table class='list ui-widget ui-widget-content ui-corner-all'>
+        <thead>
+          <tr>
+            <g:sortableColumn property='name' title="${message(code: 'worker.name.label', default: 'Name')}" />
+          </tr>
+        </thead>
+        <tbody>
+          <g:each in='${list}' status='i' var='instance'>
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+              <td>
+                <g:link action='show' id='${instance.id}' params='[title:"${instance.name}"]'>${fieldValue(bean: instance, field: "name")}</g:link>
+              </td>
+            </tr>
+          </g:each>
+        </tbody>
+      </table>
+      <div class='pagination'>
+        <g:paginate total='${total}' />
+      </div>
+    </div>
+  </body>
 </html>

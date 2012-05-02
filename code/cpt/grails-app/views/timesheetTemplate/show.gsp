@@ -30,34 +30,45 @@
     </div>
     <div class='main'>
       <h1 class='ui-widget-header ui-corner-all'>
-        ${entityName}: ${fieldValue(bean: instance, field: "name")}
+        ${entityName}: ${fieldValue(bean: template, field: "name")}
       </h1>
-      <div class='timesheet ui-widget'>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <g:each in='${instance.locations}' status='i' var='location'>
-                <th class='location'>
-                  ${fieldValue(bean: location, field: "name")}
-                </th>
-              </g:each>
-            </tr>
-          </thead>
-          <tbody>
-            <g:each in='${instance.activities}' status='i' var='activity'>
-              <tr>
-                <td class='activity'>
-                  ${fieldValue(bean: activity, field: "name")}
-                </td>
-                <g:each in='${instance.locations}'>
-                  <td></td>
-                </g:each>
-              </tr>
-            </g:each>
-          </tbody>
-        </table>
-      </div>
+      <cpt:errors bean='${data}'></cpt:errors>
+      <g:form action='save' class='ui-widget ui-widget-content ui-corner-all' controller='timesheet'>
+        <g:hiddenField name='template.id' value='${template.id}' />
+        <g:hiddenField name='project.id' value='${template.project.id}' />
+        <fieldset class='table'>
+          <div class="${hasErrors(bean: instance, field: 'date', 'error')} row required">
+            <div class='cell'>
+              <label for='dateString'>
+                Date
+              </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
+            </div>
+            <div class='cell'>
+              <g:textField class='jq-date' name='dateString' required='' value='${instance.date}' />
+            </div>
+          </div>
+          <div class="${hasErrors(bean: instance, field: 'worker', 'error')} row required">
+            <div class='cell'>
+              <label for='worker.id'>
+                ${message(code: 'worker.label')}
+              </label>
+            </div>
+            <div class='cell'>
+              <div class='required-indicator'>*</div>
+            </div>
+            <div class='cell'>
+              <g:select from='${cpt.Worker.list()}' name='worker.id' optionKey='id' optionValue='name' value='${instance?.worker?.id}' />
+            </div>
+          </div>
+        </fieldset>
+        <cpt:timesheetW data='${data}' template='${template}'></cpt:timesheetW>
+        <div class='buttons'>
+          <input class='jq-button' type='submit' value='Complete Timesheet' />
+        </div>
+      </g:form>
     </div>
   </body>
 </html>

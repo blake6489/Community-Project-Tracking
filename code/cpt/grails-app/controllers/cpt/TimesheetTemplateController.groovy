@@ -36,14 +36,15 @@ class TimesheetTemplateController {
 	}
 
 	def show() {
-		def instance = TimesheetTemplate.get(params.id)
-		if (!instance) {
+		def template = TimesheetTemplate.get(params.id)
+		if (!template) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'timesheetTemplate.label'), params.id])
 			redirect(action: "list")
 			return
 		}
+		def data = new Timesheet()
 
-		[instance: instance]
+		[instance: data, template: template, data: data]
 	}
 
 	def edit() {

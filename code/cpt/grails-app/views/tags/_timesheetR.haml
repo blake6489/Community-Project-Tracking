@@ -1,0 +1,15 @@
+.timesheet
+	%table
+		%thead
+			%tr
+				%th
+				%g:each(in="${model.locations}" status="i" var="location")
+					%th.location
+						${fieldValue(bean: location, field: "name")}
+		%tbody
+			%g:each(in="${model.activities}" status="i" var="activity")
+				%tr
+					%td.activity
+						${fieldValue(bean: activity, field: "name")}
+					%g:each(in="${model.locations}")
+						%td

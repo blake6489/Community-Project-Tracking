@@ -5,11 +5,19 @@ class WorkRecord {
 	Timesheet timesheet
 	Worker worker
 	Date date
-	double hours
+	long minutes
 	Activity activity
 	Location location
 	Tool tool
 
 	static constraints = {
+		tool nullable: true
+	}
+	
+	static mapping = {
+		project index: 'Project_Idx'
+		timesheet index: 'Timesheet_Idx'
+		worker index: 'Worker_Idx'
+		date index: 'Date_Idx'
 	}
 }
