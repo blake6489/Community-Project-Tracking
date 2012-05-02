@@ -13,6 +13,8 @@
 \usepackage{hyperref} % links
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{ulem}%strikethrough
+
 \usepackage{lscape}
 %\usepackage{titlesec}
 \usepackage{rotating} % text in tables
@@ -135,64 +137,140 @@ The {\tt 1998 - IEEE Standard for Information Technology -- Systems Design -- So
 \section{Design Considerations}
 
 \subsection{Programming Languages}
+The project will be completed using Groovy on Grails to produce a java web application. 
 
+\subsection{Database}
+The H2 database manager is the default database manager used by Grails and according to information from \href{http://database-management-systems.findthebest.com/compare/16-30/H2-vs-MySQL}{third parties} is sufficient to handle the task necessary.
 
 \subsection{Project Management}
 This project will use \e{Git} version control in conjunction with \e{GitHub} to keep track of changes. The repository can be reached at \url{https://github.com/blake6489/Community-Project-Tracking}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Domains}\label{sec:Domains}
-\subsection{User}
-\subsection{Role}
-\subsection{Project}
-\subsection{Location}
-\subsection{Tool}
-\subsection{Activity}
-\subsection{Worker}
+\subsection{User}\label{sec:DUser}
+There will be two types of user accounts: admin and employee. Both types of accounts will have unique usernames and passwords. Employee accounts will have the following permissions: fill in and submit the current time sheet, and view past timesheets submitted by that specific account. Admin accounts will have the following permissions: create/delete admin or employee accounts, view usernames and passwords of all accounts, view and edit all submitted timesheets, create and submit timesheets on behalf of volunteer group, and access to automated report generation.
+
+\setcounter{paragraph}{0}
+\subsection{Activity}\label{sec:DActivity}
+\paragraph{constraints}
+\paragraph{name} 250 characters, alphanumeric and spaces 
+\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
+\paragraph{setName}
+
+\setcounter{paragraph}{0}
+\subsection{Location}\label{sec:DLocation}
+\paragraph{constraints}
+\paragraph{name} 250 characters, alphanumeric and spaces 
+\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
+\paragraph{setName}
+
+\setcounter{paragraph}{0}
+\subsection{Project}\label{sec:DProject}
+\paragraph{constraints}
+\paragraph{name} 250 characters, alphanumeric and spaces 
+\paragraph{hasMany}
+
+\setcounter{paragraph}{0}
+\subsection{Role}\label{sec:DRole}
+\paragraph{constraints}
+\paragraph{mapping}
+\paragraph{authority}
+\paragraph{type}
+
+\setcounter{paragraph}{0}
+\subsection{Timesheet}\label{sec:DTimesheet}
+\paragraph{constraints}
+\paragraph{hasMany}
+\paragraph{date}
+\paragraph{project}
+\paragraph{template}
+\paragraph{worker}
+
+\setcounter{paragraph}{0}
+\subsection{Tool}\label{sec:DTool}
+\paragraph{constraints}
+\paragraph{name} 250 characters, alphanumeric and spaces 
+\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
+\paragraph{setName}
+
+\setcounter{paragraph}{0}
+\subsection{User}\label{sec:DUser}
+\subsection{Worker}\label{sec:DWorker}
+\paragraph{constraints}
+\paragraph{name}
+
+\setcounter{paragraph}{0}
+\subsection{Work Record}\label{sec:DWork Record}
 
 \section{Controllers}\label{sec:Controllers}
 
-\subsubsection{Project}
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
+\subsubsection{Activity}\label{sec:CActivity}
+\paragraph{create}
+\paragraph{delete}
+\paragraph{edit}
+\paragraph{index}
+\paragraph{list}
+\paragraph{save}
+\paragraph{show}
+\paragraph{update}
 
-\subsubsection{Location}
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
+\subsubsection{Home}\label{sec:CHome}
+\paragraph{grails}
+\paragraph{home}
+\paragraph{index}
 
-\subsubsection{Tool}
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
+\subsubsection{Location}\label{sec:CLocation}
+\paragraph{create}
+\paragraph{delete}
+\paragraph{edit}
+\paragraph{index}
+\paragraph{list}
+\paragraph{save}
+\paragraph{show}
+\paragraph{update}
 
-\subsubsection{Activity}
-** index\\
-** list\\
-** create\\
-** save\\
-** show\\
-** edit\\
-** update\\
-**delete\\
+\subsubsection{Login}\label{sec:CLogin}
+\paragraph{ajaxDenied}
+\paragraph{ajaxSuccess}
+\paragraph{authfail}
+\paragraph{denied}
+\paragraph{index}
+\paragraph{full}
+\paragraph{login}
 
-Views\\
+\subsubsection{Logout}\label{sec:CLogout}
+\paragraph{index}
+
+\subsubsection{Project}\label{sec:CProject}
+\paragraph{create}
+\paragraph{delete}
+\paragraph{edit}
+\paragraph{index}
+\paragraph{list}
+\paragraph{save}
+\paragraph{show}
+\paragraph{update}
+
+\subsubsection{Tool}\label{sec:CTool}
+\paragraph{create}
+\paragraph{delete}
+\paragraph{edit}
+\paragraph{index}
+\paragraph{list}
+\paragraph{save}
+\paragraph{show}
+\paragraph{update}
+
+\subsubsection{User}\label{sec:CUser}
+\paragraph{create}
+\paragraph{delete}
+\paragraph{edit}
+\paragraph{index}
+\paragraph{list}
+\paragraph{resetPassword}
+\paragraph{save}
+\paragraph{show}
+\paragraph{update}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -200,7 +278,7 @@ Views\\
 \subsection{Layouts}
 Layouts are application-wide views not tied to any specific controller. Layouts will be in the "views/layouts" folder.
 \subsubsection{application}
-This is the application-wide layout. It's reponsible for deciding what layout templates to render based on user access levels.
+This is the application-wide layout. It's responsible for deciding what layout templates to render based on user access levels.
 It must also render flash messages to alleviate other views from having to do so.
 \subsubsection{\_login}
 This template renders when the user hasn't logged in. It'll contain an ajax form allowing the user to login.
@@ -211,8 +289,14 @@ This template renders when an admin is logged in. It'll contain links to parts o
 This template renders when a non-admin is logged in. Not sure what it'll show.
 
 
-\section{Interface}
-
+\section{Interface}\label{sec:Interface}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=7in]{"CPTSiteDiagram"}
+\caption{Diagram of user  travel through site}
+\label{fig:dia}
+\end{center}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Test Cases}
 
@@ -223,13 +307,28 @@ This template renders when a non-admin is logged in. Not sure what it'll show.
 \begin{tabular}{|l||*{12}{c|}|*{4}{c|}}
 \hline
 \multicolumn{1}{|c||}{ }&
-\multicolumn{12}{|c||}{Functional} &
-\multicolumn{4}{|c|}{Non-functional}\\
+\multicolumn{6}{|c||}{Functional} &
+\multicolumn{2}{|c|}{Non-functional}\\
 \hline
-	& \s{} & \\
+	& \s{3.1.1} & \s{3.1.2}&\s{3.1.3}&\s{3.1.4}&\s{3.1.5}&\s{3.1.6}&\s{3.2.1}&\s{3.2.2} \\
 \hline
+~\ref{sec:DActivity}	&&&&&&&&\\
+~\ref{sec:DLocation}	&&&&&&&&\\
+~\ref{sec:DProject}		&&&&&&&&\\
+~\ref{sec:DRole}		&\c&&&&&&&\\
+~\ref{sec:DTimesheet}	&&&&&&&&\\
+~\ref{sec:DTool}		&&&&&&&&\\
+~\ref{sec:DUser}		&\c&&&&&&&\\
+~\ref{sec:DWorker}		&\c&&&&&&&\\
+~\ref{sec:DWork Record}	&&&&&&&&\\
 \hline
-~\ref{sec:Update timing}	&	\c \\
+~\ref{sec:CActivity}	&&&&&&&&\\
+~\ref{sec:CHome}		&&&&&&&&\\
+~\ref{sec:CLocation}	&&&&&&&&\\
+~\ref{sec:CLogin}		&\c&&&&&&&\\
+~\ref{sec:CProject}		&&&&&&&&\\
+~\ref{sec:CTool}		&&&&&&&&\\
+~\ref{sec:CUser}		&\c&&&&&&&\\
 \hline
 \end{tabular}
 \end{center}
