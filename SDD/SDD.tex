@@ -217,9 +217,9 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{update} Change activity's parameters.
 
 \subsubsection{Home}\label{sec:CHome}
-\paragraph{grails}
-\paragraph{home}
-\paragraph{index}
+\paragraph{grails} Renders the appropriate home page for the user/admin.
+\paragraph{home} Redirects user to either adminHome or userHome based on the account/role being used.
+%\paragraph{index} An empty function in HomeController.groovy, so commented out.
 
 \subsubsection{Location}\label{sec:CLocation}
 \paragraph{create}
