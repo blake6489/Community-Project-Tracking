@@ -207,14 +207,14 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \section{Controllers}\label{sec:Controllers}
 
 \subsubsection{Activity}\label{sec:CActivity}
-\paragraph{create}
-\paragraph{delete}
-\paragraph{edit}
-\paragraph{index}
-\paragraph{list}
-\paragraph{save}
-\paragraph{show}
-\paragraph{update}
+\paragraph{create} Creates activity with get request. Saves existing activity with post request.
+\paragraph{delete} Calls activity's destructor.
+%\paragraph{edit} No edit function found in ActivityController.groovy, so commented out.
+\paragraph{index} Redirects to list() function.
+\paragraph{list} Returns the parameters of the activity and the total count of activities.
+\paragraph{save} Stores activity in database and updates the total count of activities.
+\paragraph{show} Fetches parameters of activity with get request. Calls update() with post request.
+\paragraph{update} Change activity's parameters.
 
 \subsubsection{Home}\label{sec:CHome}
 \paragraph{grails}
