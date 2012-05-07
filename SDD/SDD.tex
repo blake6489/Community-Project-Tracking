@@ -155,55 +155,69 @@ There will be two types of user accounts: admin and employee. Both types of acco
 
 \setcounter{paragraph}{0}
 \subsection{Activity}\label{sec:DActivity}
-\paragraph{constraints}
-\paragraph{name} 250 characters, alphanumeric and spaces 
-\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
-\paragraph{setName}
+\paragraph{constraints} Sets constraints for name and uniqueName variables.
+\paragraph{name} Max of 250 characters, alphanumeric and spaces.
+\paragraph{uniqueName} Max of 250 characters, alphanumeric and spaces set to lower case.
+\paragraph{setName} Sets both variables and makes uniqueName's characters lower case.
 
 \setcounter{paragraph}{0}
 \subsection{Location}\label{sec:DLocation}
-\paragraph{constraints}
-\paragraph{name} 250 characters, alphanumeric and spaces 
-\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
-\paragraph{setName}
+\paragraph{constraints} Sets constraints for name and uniqueName variables.
+\paragraph{name} Max of 250 characters, alphanumeric and spaces.
+\paragraph{uniqueName} Max of 250 characters, alphanumeric and spaces  set to lower case.
+\paragraph{setName} Assigns values for name and uniqueName variables and makes uniqueName's characters lower case.
 
 \setcounter{paragraph}{0}
 \subsection{Project}\label{sec:DProject}
-\paragraph{constraints}
-\paragraph{name} 250 characters, alphanumeric and spaces 
-\paragraph{hasMany}
+\paragraph{constraints} Sets constraints for project name variable.
+\paragraph{name} 250 characters, alphanumeric and spaces.
+\paragraph{hasMany} Initializes hasMany variable to the Timesheet template.
 
 \setcounter{paragraph}{0}
 \subsection{Role}\label{sec:DRole}
-\paragraph{constraints}
-\paragraph{mapping}
-\paragraph{authority}
-\paragraph{type}
+\paragraph{constraints} Sets constraints for authority variable.
+\paragraph{mapping} Sets the use of cache to true.
+\paragraph{authority} Specifies if worker account or admin account (ex: ROLE_ADMIN).
+\paragraph{type} A printable representation of authority (ex: admin).
 
 \setcounter{paragraph}{0}
 \subsection{Timesheet}\label{sec:DTimesheet}
-\paragraph{constraints}
-\paragraph{hasMany}
-\paragraph{date}
-\paragraph{project}
-\paragraph{template}
-\paragraph{worker}
+\paragraph{constraints} Sets constraints for date, project, template, and worker variables.
+\paragraph{hasMany} Initializes hasMany variable to the workRecord record.
+\paragraph{date} The date of the timesheet.
+\paragraph{project} The project the timesheet belongs to.
+\paragraph{template} The template for the timesheet.
+\paragraph{worker} The worker associated with the timesheet.
 
 \setcounter{paragraph}{0}
 \subsection{Tool}\label{sec:DTool}
-\paragraph{constraints}
-\paragraph{name} 250 characters, alphanumeric and spaces 
-\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case
-\paragraph{setName}
+\paragraph{constraints} Sets constraints for name and uniqueName variables.
+\paragraph{name} 250 characters, alphanumeric and spaces.
+\paragraph{uniqueName} 250 characters, alphanumeric and spaces  set to lower case.
+\paragraph{setName} Assigns values for name and uniqueName variables and makes uniqueName's characters lower case.
 
 \setcounter{paragraph}{0}
 \subsection{User}\label{sec:DUser}
+\paragraph{beforeInsert} Function called by insert function. Encodes the password as it is inserted.
+\paragraph{beforeUpdate} Function called by update function. Checks if the password needs to be encoded.
+\paragraph{constraints} Sets constraints for username, uniqueUsername, password, type, and worker.
+\paragraph{createWithUserRole} Creates a user with a userRole. Same purpose as the save() function in the controllers.
+\paragraph{encodePassword} Changes password variable to encoded form of the password.
+\paragraph{password} The password for the user account.
+\paragraph{setUsername} Assigns values for username and uniqueUsername variables and makes uniqueName's characters lower case.
+\paragraph{type} Either 'user' or 'admin'.
+\paragraph{uniqueUsername} The same value as the username variable, only set to lower case.
+\paragraph{username} Validates that username has a unique object id.
+%\paragraph{worker} I have no idea where this variable is used.
+
+\setcounter{paragraph}{0}
 \subsection{Worker}\label{sec:DWorker}
-\paragraph{constraints}
-\paragraph{name}
+\paragraph{constraints} Sets constraints for name variable.
+\paragraph{name} The first and last name of the worker.
 
 \setcounter{paragraph}{0}
 \subsection{Work Record}\label{sec:DWork Record}
+\paragraph{mapping} Assigns identifiable names to the indices of the variables: project, timesheet, worker, and date.
 
 \section{Controllers}\label{sec:Controllers}
 
