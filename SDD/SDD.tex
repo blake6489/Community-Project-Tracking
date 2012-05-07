@@ -221,7 +221,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 
 \section{Controllers}\label{sec:Controllers}
 
-\subsubsection{Activity}\label{sec:CActivity}
+\subsection{Activity}\label{sec:CActivity}
 \paragraph{create} Creates activity object with get request. Saves existing activity with post request.
 \paragraph{delete} Calls activity object's destructor.
 %\paragraph{edit} No edit function found in ActivityController.groovy, so commented out.
@@ -231,12 +231,12 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show} Fetches parameters of activity object with get request. Calls update() with post request.
 \paragraph{update} Changes activity object's parameters.
 
-\subsubsection{Home}\label{sec:CHome}
+\subsection{Home}\label{sec:CHome}
 \paragraph{grails} Renders the appropriate home page for the user/admin.
 \paragraph{home} Redirects user to either adminHome or userHome based on the account/role being used.
 %\paragraph{index} An empty function in HomeController.groovy, so commented out.
 
-\subsubsection{Location}\label{sec:CLocation}
+\subsection{Location}\label{sec:CLocation}
 \paragraph{create} Creates location object with get request. Saves existing location with post request.
 \paragraph{delete} Calls location object's destructor.
 %\paragraph{edit} No edit function found in LocationController.groovy, so commented out.
@@ -246,7 +246,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show} Fetches parameters of location object with get request. Calls update() with post request.
 \paragraph{update} Changes location object's parameters.
 
-\subsubsection{Login}\label{sec:CLogin}
+\subsection{Login}\label{sec:CLogin}
 \paragraph{ajaxDenied} Renders message for when the redirect url is denied.
 \paragraph{ajaxSuccess} Renders message for when the redirect url is accepted.
 \paragraph{authfail} Serves as the callback for a failed login. Redirects to the authentication page with the appropriate warning message (ex: springSecurity.errors.login.expired).
@@ -255,10 +255,10 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{full} Renders login page for browsers with password remembering cookie.
 \paragraph{login} Renders login page for browsers without password remembering cookie.
 
-\subsubsection{Logout}\label{sec:CLogout}
+\subsection{Logout}\label{sec:CLogout}
 \paragraph{index} Redirects to the Spring security logout uri.
 
-\subsubsection{Project}\label{sec:CProject}
+\subsection{Project}\label{sec:CProject}
 \paragraph{create} Creates project object with get request. Saves existing project with post request.
 \paragraph{delete} Calls project object's destructor.
 %\paragraph{edit} No edit function found in ProjectController.groovy, so commented out.
@@ -268,7 +268,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show} Fetches parameters of project object with get request. Calls update() with post request.
 \paragraph{update} Changes project object's parameters.
 
-\subsubsection{Tool}\label{sec:CTool}
+\subsection{Tool}\label{sec:CTool}
 \paragraph{create} Creates tool object with get request. Saves existing tool with post request.
 \paragraph{delete} Calls tool object's destructor.
 %\paragraph{edit} No edit function found in ToolController.groovy, so commented out.
@@ -278,7 +278,7 @@ There will be two types of user accounts: admin and employee. Both types of acco
 \paragraph{show} Fetches parameters of tool object with get request. Calls update() with post request.
 \paragraph{update} Changes tool object's parameters.
 
-\subsubsection{User}\label{sec:CUser}
+\subsection{User}\label{sec:CUser}
 \paragraph{create} Creates user object with get request. Saves existing user with post request.
 %\paragraph{delete} Delete function left blank.
 %\paragraph{edit} No edit function found in ToolController.groovy, so commented out.
