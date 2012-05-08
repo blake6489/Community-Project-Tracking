@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Software Design Document
+%Created by Blake Eggemeyer 2012 Feb 16 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{verbatim}
+\usepackage{hyperref} % links
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{lscape}
+%\usepackage{titlesec}
+\usepackage{rotating} % text in tables
+
+% table colors
+\usepackage[table]{xcolor}
+\usepackage{color}
+\definecolor{grey}{RGB}{230,230,230}
+
+% make paragraphs less important looking
+\usepackage{sectsty}
+\paragraphfont{\normalfont}
+\subparagraphfont{\normalfont}
+
+\usepackage[T1]{fontenc}
+
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\ttdefault}{pcr}
+
+\renewcommand{\c}{\checkmark}
+
+%type face for code and such things
+\newcommand{\e}[1] {{\tt #1}}
+%used in table
+\newcommand{\s}[1] {\begin{sideways}#1\end{sideways}}
+
+\setlength{\parindent}{0pt}
+
+\topmargin 0in
+\headheight 0in
+\headsep 0in
+\textheight 8.5in
+\textwidth 6in
+\oddsidemargin 0in
+\evensidemargin 0in
+\headheight 7pt
+\headsep 0in
+\footskip .7in
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{flushright} 
+% Title
+{\LARGE \bfseries How-to Document}\\[1.2cm]
+{\large \bfseries for}\\[1.2cm]
+{\huge \bfseries Community Project Tracking}\\[1.2cm]
+{\large \bfseries CS 472}\\
+\vfill
+{\large \bfseries Draft 0.1}\\[2cm]
+\emph{Prepared by:} \\
+Tim Grediagin\\
+Devin Jones\\
+Brent Mello\\
+Blake Eggemeyer \\ [3cm]
+% Bottom of the page
+{\large \today}
+\\[2cm]
+\end{flushright}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+%\tableofcontents
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%http://en.wikipedia.org/wiki/Traceability_matrix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+
+\subsection{Overview}
+This document is intended to be used by the recipient of the TODO software.
+
+\subsection{Staff member}
+Step 1: Login\\
+step 2: Choose either submit timesheet, or view previous timesheets\\
+step 2.1: If you chose view previous timesheet proceed to step 6\\
+step 3: Click to select the typical timesheet for the task you are doing.\\
+step 4: Fill in fields for where you worked, and what tools you used. press submit.\\
+step 5: Choose whether to view timesheets, or log out.\\
+step 6: Type the date of the time sheet you wish to view in the input box, and click submit\\
+step 7: View the chosen timesheet.\\
+
+\subsection{Administrator}
+Step 1: Login\\
+step 2: Choose either view/modify timesheets, generate report, or create group timesheet\\
+step 2.1: If you chose generate report proceed to step 5\\
+step 2.2: If you choose create group timesheet proceed to step 9\\
+step 3: Select a date to view a timesheet\\
+step 4: Click done to return to the menu.\\
+step 5: To generate a report, select the fields you wish to include in your report, for instance area, tools used, or which employee worked there.\\
+step 6: Press submit to receive the report.\\
+step 7: Press done to return to the main menu.\\
+step 8: Input the name of the group, where they worked, what tools they used, and how many hours they worked.\\
+step 9: Press submit to return to menu.\\
+
+
+
+
+\end{document}
+
